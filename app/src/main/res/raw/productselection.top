@@ -1,0 +1,17 @@
+topic: ~productselection()
+
+proposal: %init Here are the produtcs that we have available.
+
+u:({~i_want_to} {shoes} {for} [man men male] {shoes}) ~confirmation for a man. ^execute(StatusExecutor, gender, MALE)
+
+u:({~i_want_to} {shoes} {for} [woman women female] {shoes}) ~confirmation for a woman. ^execute(StatusExecutor, gender, FEMALE)
+
+u:({~i_want_to} "sneakers" "sport {shoes}") ~confirmation sport shoes. ^execute(StatusExecutor, type, sport)
+
+u:({~i_want_to} "dress {shoes}") ~confirmation classic shoes. ^execute(StatusExecutor, type, dress)
+
+u:({~i_want_to} {let's} {go} home) ~confirmation going home ^execute(FragmentExecutor, home)
+
+u:([next froward go]) ~confirmation ^execute(FragmentExecutor, product)
+
+

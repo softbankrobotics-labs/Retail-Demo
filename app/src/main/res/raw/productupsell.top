@@ -1,0 +1,12 @@
+topic: ~productupsell()
+
+proposal: %init Today only you can get hese matching socks with your shoes for fifty precent off, would you like to add them to your cart ?
+
+u:(["add" "yes{please}"]) Perfect, I added them ^execute(FragmentExecutor, buy, add)
+
+u:(back) alright, going back. ^execute(FragmentExecutor, selection)
+
+u:(["skip" "no {I don't want them}"]) sure ! ^execute(FragmentExecutor, buy)
+
+
+

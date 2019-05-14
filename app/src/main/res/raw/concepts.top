@@ -1,0 +1,33 @@
+topic: ~concepts()
+
+concept:(hello) [hello hi hey]
+
+concept:(i_want_to) [want "I want" "I want to" "want to" "I would like to" "would like to"]
+
+concept:(i_need_to) [need "I need" "I need to" "need to"]
+
+concept:(can_you) ["can you" "are you able to" "could you" "do you know how to"]
+
+concept:(you_are) [you're "you are"]
+
+concept:(you_have) ["you've {got gotten}" "you have {got gotten}"]
+
+concept:(do_you_have) ["{do} you have" "have you got"]
+
+concept:(are_you) [~you_are "are you"]
+
+concept:(may_i) "[can may should could] I"
+
+concept:(i_would)[I'd Id "I would"]
+
+concept:(i_am)[I'm i'm "I am" "i am"]
+
+concept:(confirmation)["okay!" "got it!" "perfect!"]
+
+concept:(can_i) [ "[can could may] [I we]"
+    "[I'd "I would"] like to"
+    "do you agree if I"
+    "is it possible [to "that I"]"]
+
+concept:(what_is) [ "{"~can_you tell me" "do you know" "tell me"} [
+        what's "what is"]"]

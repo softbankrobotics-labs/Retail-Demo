@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_grad_white_r0_a90"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imageMain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_home_selection"
+        android:layout_width="800dp"
+        android:layout_height="0dp"
+        android:src="@drawable/it_dressman_gry_1" />
+
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="40sp"
+        android:textColor="@color/back"
+        android:padding="10dp"
+        android:background="@drawable/ui_grad_yellow_r0_a0"
+        android:layout_margin="10dp"
+        android:text="EUR 119.99"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/button_home_selection"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/button_home_selection">
+
+        <RadioGroup
+            android:checkedButton="@+id/woman"
+            android:id="@+id/gender"
+            android:padding="6dp"
+            android:layout_width="300dp"
+            android:layout_marginEnd="3dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ui_outline_blue"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/woman"
+                android:background="@drawable/ui_widget_background"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:text="@string/woman" />
+
+            <RadioButton
+                android:id="@+id/man"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/ui_widget_background"
+                android:button="@null"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:text="@string/man"/>
+        </RadioGroup>
+
+
+        <RadioGroup
+            android:id="@+id/type"
+            android:checkedButton="@+id/sport"
+            android:padding="6dp"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="3dp"
+            android:background="@drawable/ui_outline_blue"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/dress"
+                android:background="@drawable/ui_widget_background"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:text="@string/dress" />
+
+            <RadioButton
+                android:id="@+id/sport"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/ui_widget_background"
+                android:button="@null"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:text="@string/sport"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_home_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ui_white_r30"
+        android:backgroundTint="@color/light_gray"
+        android:drawableStart="@drawable/ic_back"
+        android:padding="10dp"
+        android:textAllCaps="false"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp"
+        android:text="@string/home"
+        android:textColor="@color/dark_gray"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_next_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ui_grad_blue_r30_a0"
+        android:drawableEnd="@drawable/ic_forward_white"
+        android:padding="10dp"
+        android:textAllCaps="false"
+        android:paddingEnd="10dp"
+        android:paddingStart="20dp"
+        android:text="@string/next"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

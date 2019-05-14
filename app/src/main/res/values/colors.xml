@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- colors used by Pepper Speechbar -->
+    <color name="colorSpeechBar">#00d7ff</color>
+    <color name="colorSpeechBarDraker">#00A1EC</color>
+
+    <!-- other colors for UI elements -->
+    <color name="colorYellowlight">#F2E154</color>
+    <color name="colorYellowDark">#F68701</color>
+
+    <color name="colorPeachlight">#EED28B</color>
+    <color name="colorPeachDark">#FD4351</color>
+
+    <color name="colorPurplelight">#BD00F4</color>
+    <color name="colorPurpleDark">#8200FC</color>
+
+    <color name="transparent">#008200FC</color>
+    <color name="transparent_black">#33000000</color>
+    <color name="transparent_black_dark">#4D000000</color>
+
+
+    <!-- android defaults -->
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- general purpose colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="back">#000000</color>
+    <color name="light_gray">#E4E4E4</color>
+    <color name="background_image">#E4E4E4</color>
+    <color name="grey">#99777373</color>
+    <color name="grey_background">#CCFFFFFF</color>
+    <color name="dark_gray">#333333</color>
+    <color name="transparent_gray">#80FFFFFF</color>
+
+    <!-- colors for red theme -->
+    <color name="red_almost_white">#E48080</color>
+    <color name="red_light">#E25252</color>
+    <color name="red_vibrant">#D50404</color>
+    <color name="red">#A00C0C</color>
+    <color name="red_dark">#700C0C</color>
+    <color name="red_almost_black">#440909</color>
+
+    <!-- colors for rating -->
+    <color name="red_rating_start">#6D1010</color>
+    <color name="red_rating_end">#A00C0C</color>
+
+    <color name="orange_rating_start">#B87719</color>
+    <color name="orange_rating_end">#F59C1B</color>
+
+    <color name="yellow_rating_start">#C5B910</color>
+    <color name="yellow_rating_end">#97CC07</color>
+
+    <color name="green_rating_start">#58A719</color>
+    <color name="green_rating_end">#4DFF00</color>
+
+    <!-- colors for red theme -->
+    <color name="blue_almost_white">#6694E2</color>
+    <color name="blue_light">#236CE4</color>
+    <color name="blue_vibrant">#0A54D1</color>
+    <color name="blue">#0C42A0</color>
+    <color name="blue_dark">#093179</color>
+    <color name="blue_almost_black">#07255C</color>
+
+
+    <!-- colors products -->
+    <color name="product_black">#252422</color>
+    <color name="product_black_darker">#161414</color>
+    <color name="product_grey">#928A89</color>
+    <color name="product_grey_darker">#686361</color>
+    <color name="product_red">#D6413C</color>
+    <color name="product_red_darker">#832926</color>
+    <color name="product_tan">#CBAD96</color>
+    <color name="product_tan_darker">#7E6B5D</color>
+
+
+</resources>

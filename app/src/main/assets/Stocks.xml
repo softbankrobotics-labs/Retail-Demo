@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+    <item ressource="sportman" price="89.99" name="man sport sneakers">
+        <attribute name="blk" available="true"/>
+        <attribute name="gry" available="true"/>
+        <attribute name="red" available="true"/>
+        <attribute name="tan" available="true"/>
+    </item>
+    <item ressource="sportwom" price="119.99" name="woman sport sneakers">
+        <attribute name="blk" available="true"/>
+        <attribute name="gry" available="false"/>
+        <attribute name="red" available="true"/>
+        <attribute name="tan" available="true"/>
+    </item>
+    <item ressource="dressman" price="199.99" name="man dress shoes">
+        <attribute name="blk" available="true"/>
+        <attribute name="gry" available="true"/>
+        <attribute name="red" available="true"/>
+        <attribute name="tan" available="true"/>
+    </item>
+    <item ressource="dresswom" price="219.99" name="woman dress shoe">
+        <attribute name="blk" available="true"/>
+        <attribute name="gry" available="true"/>
+        <attribute name="red" available="true"/>
+        <attribute name="tan" available="true"/>
+    </item>
+</items>

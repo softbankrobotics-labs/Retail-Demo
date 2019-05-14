@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layout_item"
+    android:padding="15dp">
+    <ImageView
+        android:id="@+id/image_returned_item"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ui_white_r10"
+        android:src="@drawable/sc_sportwom"
+        android:layout_marginEnd="10dp"
+        android:layout_gravity="center_vertical"
+        />
+    <TextView
+        android:layout_width="0dp"
+        android:textSize="30dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/item_name"
+        android:layout_margin="3dp"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/selected_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="@string/price"
+        android:layout_margin="3dp"
+        android:textSize="30dp"
+        android:id="@+id/selected_price"/>
+
+</LinearLayout>

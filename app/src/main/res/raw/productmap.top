@@ -1,0 +1,7 @@
+topic: ~productmap()
+
+proposal: %init We have this in store ! it's right over there.
+
+u:(home) okay, going home ^execute(FragmentExecutor, home)
+
+u:(back) okay I'm going back ^execute(FragmentExecutor, selection)

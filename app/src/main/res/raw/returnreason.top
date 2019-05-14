@@ -1,0 +1,21 @@
+topic: ~returnreason()
+
+concept:(numbers) [one two three four five six seven eight nine]
+
+proposal: %init Please place the product in locker number ~numbers . I would really appreciate if you could tell me why you are returning this product.
+
+u:(home) alright, going home. ^execute(FragmentExecutor, home)
+
+u:(back) alright, going back. ^execute(FragmentExecutor, returnprod)
+
+u:("wrong color") ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:("wrong size") ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:("product flawed") ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:("don't need it") ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:("don't like it") ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:("did not fit") ~confirmation ^execute(FragmentExecutor, feedback)

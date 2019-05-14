@@ -1,0 +1,7 @@
+topic: ~feedback()
+
+concept:(ratings) ["perfect" "good" "okay" "bad" "awful"]
+
+proposal: %init Could you please rate your experience with me ?
+
+u:(~ratings) %thanks thank you for your feedback, goodbye! ^execute(FragmentExecutor, home)

@@ -1,0 +1,31 @@
+topic: ~product()
+
+proposal: %init Here are all the different sizes and colors for this item.
+
+u:({~i_want_to} {them} {in} black) ^execute(StatusExecutor, color, blk) here it is in black.
+u:({~i_want_to} {them} {in} grey) ^execute(StatusExecutor, color, gry) here it is in grey.
+u:({~i_want_to} {them} {in} red) ^execute(StatusExecutor, color, red) here it is in red.
+u:({~i_want_to} {them} {in} tan) ^execute(StatusExecutor, color, tan) here it is in tan.
+
+u:({my size {is}} thirty five) ^execute(StatusExecutor, check, 35) ^enableThenGoto(okay)
+u:({my size {is}} thirty six) ^execute(StatusExecutor, check, 36) ^enableThenGoto(okay)
+u:({my size {is}} thirty seven) ^execute(StatusExecutor, check, 37)^enableThenGoto(okay)
+u:({my size {is}} thirty eight) ^execute(StatusExecutor, check, 38) ^enableThenGoto(okay)
+u:({my size {is}} thirty nine) ^execute(StatusExecutor, check, 39) ^enableThenGoto(okay)
+u:({my size {is}} forty) ^execute(StatusExecutor, check, 40) ^enableThenGoto(okay)
+u:({my size {is}} forty one) ^execute(StatusExecutor, check, 41)^enableThenGoto(okay)
+u:({my size {is}} forty two) ^execute(StatusExecutor, check, 42) ^enableThenGoto(okay)
+u:({my size {is}} forty three) ^execute(StatusExecutor, check, 43) ^enableThenGoto(okay)
+u:({my size {is}} forty four) ^execute(StatusExecutor, check, 44) ^enableThenGoto(okay)
+u:({my size {is}} forty five) ^execute(StatusExecutor, check, 45)^enableThenGoto(okay)
+u:({my size {is}} forty six) ^execute(StatusExecutor, check, 46) ^enableThenGoto(okay)
+
+proposal: %okay Okay, I selected that size
+
+proposal: %impossible Sorry this size is not available
+
+u:(products) okay, I'm going back. ^execute(FragmentExecutor, selection)
+
+u:(home) alright, going home. ^execute(FragmentExecutor, home)
+
+u:([buy order]) perfect! ^execute(FragmentExecutor, upsell)

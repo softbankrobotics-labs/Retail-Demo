@@ -1,0 +1,28 @@
+topic: ~returnmain()
+
+proposal: %init Please show me your receipt so I can find the product you want to return.
+
+proposal: %ticketfound ~confirmation I found your items, tell me which one you want to return.
+
+dynamic: product_0
+
+dynamic: product_1
+
+dynamic: product_2
+
+dynamic: product_3
+
+dynamic: product_4
+
+u:(home) alright, going home. ^execute(FragmentExecutor, home)
+
+u:(~product_0) ~product_0, ~confirmation  ^execute(StatusExecutor, clickreturn, 0)
+
+u:(~product_1) ~product_1, ~confirmation  ^execute(StatusExecutor, clickreturn, 1)
+
+u:(~product_2) ~product_2, ~confirmation  ^execute(StatusExecutor, clickreturn, 2)
+
+u:(~product_3) ~product_3, ~confirmation  ^execute(StatusExecutor, clickreturn, 3)
+
+u:(~product_4) ~product_4, ~confirmation  ^execute(StatusExecutor, clickreturn, 4)
+

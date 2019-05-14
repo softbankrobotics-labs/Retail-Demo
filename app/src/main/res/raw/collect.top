@@ -1,0 +1,5 @@
+topic: ~collect()
+
+proposal: %init Please scan your barcode or enter your order number.
+
+u:(home) sure, going home. ^execute(FragmentExecutor, home)

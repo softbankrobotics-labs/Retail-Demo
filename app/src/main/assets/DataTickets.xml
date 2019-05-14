@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tickets>
+    <ticket id="ticket01">
+        <item name="Man Dress Shoes, Black" price="199.99" imageId="it_dressman_blk_1"/>
+        <item name="Woman Sport Shoes, Red" price="119.99" imageId="it_sportwom_red_1"/>
+        <item name="Classic Socks" price="10.99" imageId="sc_dressman"/>
+    </ticket>
+    <ticket id="default">
+        <item name="Man Sport Shoes, Tan" price="89.99" imageId="it_sportman_tan_1"/>
+        <item name="Cool Socks" price="10.99" imageId="sc_sportman"/>
+    </ticket>
+</tickets>

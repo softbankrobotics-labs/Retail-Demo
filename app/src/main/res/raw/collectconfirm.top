@@ -1,0 +1,9 @@
+topic: ~collectconfirm()
+
+proposal: %init Perfect, I found your order, here is the locker in which it is located. You will need to sign here in order to open it.
+
+u:(open locker) %locker okay ! the locker is now open, you can pickup your item. ^execute(FragmentExecutor, feedback)
+
+u:(home) sure, going home. ^execute(FragmentExecutor, home)
+
+u:(back) okay I'm going back ^execute(FragmentExecutor, selection)
