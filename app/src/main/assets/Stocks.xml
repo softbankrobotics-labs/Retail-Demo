@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <items>
-    <item ressource="sportman" price="89.99" name="man sport sneakers">
-        <attribute name="blk" available="true"/>
-        <attribute name="gry" available="true"/>
+    <itemsdata option1_1="Woman" option1_2="Man" option2_1="Dress" option2_2="Sport" upsellPrice="20.99"/>
+    <item ressource="sport_man" price="89.99" name="Man sport sneakers" upsellname = "Cool Socks">
+        <attribute name="black" available="true"/>
+        <attribute name="grey" available="true"/>
         <attribute name="red" available="true"/>
         <attribute name="tan" available="true"/>
     </item>
-    <item ressource="sportwom" price="119.99" name="woman sport sneakers">
-        <attribute name="blk" available="true"/>
-        <attribute name="gry" available="false"/>
+
+    <item ressource="sport_woman" price="119.99" name="Woman sport sneakers" upsellname = "Cool Socks">
+        <attribute name="black" available="true"/>
+        <attribute name="grey" available="false"/>
         <attribute name="red" available="true"/>
         <attribute name="tan" available="true"/>
     </item>
-    <item ressource="dressman" price="199.99" name="man dress shoes">
-        <attribute name="blk" available="true"/>
-        <attribute name="gry" available="true"/>
+
+    <item ressource="dress_man" price="199.99" name="Man dress shoes" upsellname = "Classic Socks">
+        <attribute name="black" available="true"/>
+        <attribute name="grey" available="true"/>
         <attribute name="red" available="true"/>
         <attribute name="tan" available="true"/>
     </item>
-    <item ressource="dresswom" price="219.99" name="woman dress shoe">
-        <attribute name="blk" available="true"/>
-        <attribute name="gry" available="true"/>
+
+    <item ressource="dress_woman" price="219.99" name="Woman dress shoe" upsellname = "Classic Socks">
+        <attribute name="black" available="true"/>
+        <attribute name="grey" available="true"/>
         <attribute name="red" available="true"/>
         <attribute name="tan" available="true"/>
     </item>
+
 </items>

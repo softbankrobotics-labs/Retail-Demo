@@ -5,64 +5,64 @@
     android:layout_width="match_parent"
     android:background="@color/white"
     android:layout_height="fill_parent">
-
-
     <Button
-        android:id="@+id/buttonId"
+        android:id="@+id/button_shop"
+        android:textStyle="bold"
+        android:textAllCaps="false"
         android:layout_width="400dp"
         android:layout_height="fill_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/id"
-        android:textSize="30sp"
+        android:text="@string/shop"
+        android:textSize="35sp"
         android:background="@drawable/ui_grad_blue_r10_a0"
-        android:drawableBottom="@drawable/ui_qrcode_logo_resizable"
+        android:drawableBottom="@drawable/ic_resizable_shop"
         android:paddingBottom="70dp"
         android:layout_margin="10dp"/>
-
-
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@id/buttonId"
+        app:layout_constraintEnd_toStartOf="@id/button_shop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
-
         <Button
-            android:id="@+id/buttonShopping"
+            android:id="@+id/button_click"
+            android:textStyle="bold"
+            android:textAllCaps="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/ui_grad_blue_r10_a180"
-            android:drawableStart="@drawable/ic_shopping_resizable"
+            android:drawableStart="@drawable/ic_resizable_click"
             android:padding="15dp"
-            android:text="@string/shop"
-            android:textSize="30sp" />
-
+            android:text="@string/id"
+            android:textSize="35sp" />
         <Button
-            android:id="@+id/buttonReturns"
+            android:id="@+id/button_return"
+            android:textStyle="bold"
+            android:textAllCaps="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/ui_grad_blue_r10_a180"
-            android:drawableStart="@drawable/ic_return_resizable"
+            android:drawableStart="@drawable/ic_resizable_return"
             android:padding="15dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:text="@string/retuns"
-            android:textSize="30sp" />
+            android:textSize="35sp" />
         <Button
+            android:id="@+id/button_add"
             android:textAlignment="gravity"
-            android:gravity="right"
-            android:id="@+id/buttonAdd"
-            android:drawableEnd="@drawable/percent"
+            android:gravity="end"
+            android:drawableEnd="@drawable/ui_percent"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_margin="10dp"
@@ -70,22 +70,20 @@
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:paddingStart="20dp"
+            android:paddingEnd="0dp"
             android:text="@string/promotion"
             style="?android:attr/borderlessButtonStyle"
             android:textSize="30sp" />
-
     </LinearLayout>
-
-
     <View
         android:layout_width="85dp"
         android:layout_height="85dp"
-        android:background="@drawable/ui_white_topright_rounded"
+        android:background="@drawable/ui_white_top_rounded"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
     <ImageButton
-        android:id="@+id/buttonLanguage"
+        android:contentDescription="@string/item_name"
+        android:id="@+id/button_language"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:scaleType="fitCenter"
@@ -93,7 +91,6 @@
         android:background="@null"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
     <LinearLayout
         android:id="@+id/view_lang_container"
         android:layout_width="wrap_content"
@@ -102,32 +99,36 @@
         android:backgroundTint="@color/grey_background"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLanguage">
-
+        app:layout_constraintBottom_toTopOf="@+id/button_language">
         <ImageButton
             android:id="@+id/button_lang_3"
+            android:contentDescription="@string/item_name"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:scaleType="fitCenter"
             android:src="@drawable/lang_es"
             android:background="@null"
+            android:alpha="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
         <ImageButton
             android:id="@+id/button_lang_2"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/lang_fr"
-            android:background="@null"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-        <ImageButton
-            android:id="@+id/button_lang_1"
+            android:contentDescription="@string/item_name"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:scaleType="fitCenter"
             android:src="@drawable/lang_gr"
+            android:background="@null"
+            android:alpha="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <ImageButton
+            android:id="@+id/button_lang_1"
+            android:contentDescription="@string/item_name"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/lang_fr"
             android:background="@null"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

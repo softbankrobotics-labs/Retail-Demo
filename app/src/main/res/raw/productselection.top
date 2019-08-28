@@ -1,17 +1,42 @@
 topic: ~productselection()
 
-proposal: %init Here are the produtcs that we have available.
+dynamic: product_type
 
-u:({~i_want_to} {shoes} {for} [man men male] {shoes}) ~confirmation for a man. ^execute(StatusExecutor, gender, MALE)
+proposal: %init Here are different products that are available, please select the one that you prefer.
 
-u:({~i_want_to} {shoes} {for} [woman women female] {shoes}) ~confirmation for a woman. ^execute(StatusExecutor, gender, FEMALE)
+proposal: %init_context thanks to my age and gender analysis capabilities, I have selected these ~product_type shoes for you. Is this what you are looking for ?
 
-u:({~i_want_to} "sneakers" "sport {shoes}") ~confirmation sport shoes. ^execute(StatusExecutor, type, sport)
+proposal: %init_promotion Since you are shopping with me today, you can get these sneakers for 20 percent off, are you interested in them ?
 
-u:({~i_want_to} "dress {shoes}") ~confirmation classic shoes. ^execute(StatusExecutor, type, dress)
+u:(["~no" "not really" "meh" "it's not"]) Okay then. please select another product from below.
 
-u:({~i_want_to} {let's} {go} home) ~confirmation going home ^execute(FragmentExecutor, home)
+u:(["{~i_want_to} {shoes} {for} [~male] {shoes}"
+    "I am shopping for {[a my]} ~male"]) ^execute(StatusExecutor, gender, MALE) ~confirmation, for a man, would you like to buy these ?
 
-u:([next froward go]) ~confirmation ^execute(FragmentExecutor, product)
+u:(["{~i_want_to} {shoes} {for} [~female] {shoes}"
+    "I am shopping for {[a my]} ~female"]) ^execute(StatusExecutor, gender, FEMALE) ~confirmation, for a woman, would you like to buy these ?
 
+u:({~i_want_to} ~sport) ^execute(StatusExecutor, type, Sport) ~confirmation, sport shoes, would you like to buy these ?
+
+u:({~i_want_to} ~dress) ^execute(StatusExecutor, type, Dress) ~confirmation, classic shoes, would you like to buy these ?
+
+u:({~i_want_to} {let's} {go} [home back]) ~confirmation, going home ^execute(FragmentExecutor, home)
+
+u:(["{~i_want_to} ~dress {for} ~male"
+    "{~i_want_to} ~male ~dress"]) ^execute(StatusExecutor, gender_type, MALE Dress) ~confirmation, classic shoes for man, are these okay ?
+
+u:(["{~i_want_to} ~sport {for} ~male"
+    "{~i_want_to} ~male ~sport"]) ^execute(StatusExecutor, gender_type, MALE Sport) ~confirmation, sport shoes for man, are these okay ?
+
+u:(["{~i_want_to} ~dress {for} ~female"
+    "{~i_want_to} ~female ~dress"]) ^execute(StatusExecutor, gender_type, FEMALE Dress) ~confirmation, classic shoes for a woman, are these okay ?
+
+u:(["{~i_want_to} ~sport {for} ~female"
+    "{~i_want_to} ~female ~sport"]) ^execute(StatusExecutor, gender_type, FEMALE Sport)~confirmation, sport shoes for a woman, are these okay ?
+
+u:([~yes "it is" next froward go customize custom "I like [them these]" "[these they] are good" "[this these] one"]) ~confirmation ^execute(FragmentExecutor, product)
+
+u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)
 

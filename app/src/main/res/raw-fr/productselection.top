@@ -1,0 +1,38 @@
+topic: ~productselection()
+
+dynamic: product_type
+
+proposal: %init Voici les différents produits disponibles, dit moi celui qui te convient le mieux.
+
+proposal: %init_context  j'ai sélectionné ces chaussures grâce à mes capacités d'analyse d'âge et du genre, est ce qu'elles te plaisent ?
+
+proposal: %init_promotion aujourd'hui seulement nous avons une promotion de vingt pourcent sur ces tennis, est ce qu'elles te plaisent ?
+
+u:([~non "pas vraiment" "bof"]) okay pas de problèmes, tu peux toujours choisir un des autres modèles ci dessous
+
+u:(["{[~vouloir ~devoir "je cherche"]} {des chaussures pour} ~homme" "~je_suis un ~homme"]) ^execute(StatusExecutor, gender, MALE) ~confirmation, pour un homme, veux tu les acheter ?
+
+u:(["{[~vouloir ~devoir "je cherche"]} {des chaussures pour} ~femme" "~je_suis une ~femme"])^execute(StatusExecutor, gender, FEMALE) ~confirmation, pour une femme, veux tu les acheter ?
+
+u:({[~vouloir ~devoir "je cherche"]}  ~sport) ^execute(StatusExecutor, type, Sport) ~confirmation, des chaussures de sport, veux tu les acheter ?
+
+u:({j[~vouloir ~devoir "je cherche"]}  ~chic) ^execute(StatusExecutor, type, Dress) ~confirmation, des chaussures de ville, veux tu les acheter ?
+
+u:(["{je [veux voudrais cherche] des} ~chic {pour} ~homme"
+    "~homme ~chic"]) ^execute(StatusExecutor, gender_type, MALE Dress) ~confirmation, des chaussures de ville pour homme, veux tu les acheter ?
+
+u:(["{je [veux voudrais cherche] des} ~sport {pour} ~homme"
+    "~homme ~sport"]) ^execute(StatusExecutor, gender_type, MALE Sport) ~confirmation, des chaussures de sport pour homme, veux tu les acheter ?
+
+u:(["{je [veux voudrais cherche] des} ~chic {pour} ~femme"
+    "~femme ~chic"]) ^execute(StatusExecutor, gender_type, FEMALE Dress) ~confirmation, des chaussures de ville pour femme, veux tu les acheter ?
+
+u:(["{je [veux voudrais cherche] des} ~sport {pour} ~femme"
+    "~femme ~sport"]) ^execute(StatusExecutor, gender_type, FEMALE Sport) ~confirmation, des chaussures de sport pour femme, veux tu les acheter ?
+
+u:([~oui "elles me plaisent" "j'aime {bien}" suivant customizer Personnaliser Configurer "celle [la ci] {sont bien}" "elles sont bien" "celui la"]) ~confirmation ^execute(FragmentExecutor, product)
+
+u:([~menu ~retour]) ~confirmation ^execute(FragmentExecutor, home)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)
+

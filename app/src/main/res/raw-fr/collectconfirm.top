@@ -1,0 +1,12 @@
+topic: ~collectconfirm()
+
+proposal: %init Parfait, j'ai trouvé ta commande, voici le casier dans lequel elle se trouve. Tu devras signer ici pour l'ouvrir. $signed = false
+
+u:({[~vouloir ~devoir]} [ouvrir ouvre] {[le mon ce]} {casier}) %locker ^first[ "$signed == true D'accord ! Laisse moi ouvrir le casier pour toi."
+                                "Désolé, tu vas devoir signer avant d'ouvrir le casier."] ^execute(FragmentExecutor, locker)
+
+u:(~menu) ~confirmation ^execute(FragmentExecutor, home)
+
+u:(~retour) okay, je retourne en arrière ^execute(FragmentExecutor, selection)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

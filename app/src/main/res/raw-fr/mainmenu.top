@@ -1,0 +1,19 @@
+topic: ~mainmenu()
+
+proposal: %init ~bonjour !  ^first ["$first==0^rand["je m'appele" "je suis"] Pepper, ^rand["Je peux" "Je suis la pour"] t'aider à choisir des chaussures, récupérer ta commande en ligne ou encore retourner un article, que voudrais tu faire ? $first = 1"
+                                  "veux tu que je t'aide a choisir des chaussures, récupérer ta commande en ligne ou encore, retourner un article ?" ]
+
+u:(~bonjour) ~bonjour, veux tu que je t'aide à choisir des chaussures, récupérer ta commande en ligne ou encore, retourner un article ?
+
+u:(["{[~vouloir ~devoir]} ["faire du shopping" "shopping"]" "commencer mes achats"
+    "{[~vouloir ~devoir]}  [acheter choisir] [des mes] {nouvelles} chaussures "]) ~confirmation ^execute(FragmentExecutor, selection)
+
+u:({[~vouloir ~devoir]}  retourner {un} [produit item achat article "des chaussures" "objet"]) ~confirmation ^execute(FragmentExecutor, returnmain)
+
+u:(["click and collect" "{[~vouloir ~devoir]}  ["collecter" "recupérer"] {un} [produit item achat article "des chaussures" "objet"]"]) ~confirmation ^execute(FragmentExecutor, collect)
+
+u:(["{je suis Intéressé par la} promotion" "soldes" "tennis {pour homme} en solde"
+    "{quel est} la promotion du jour"
+    "{~vouloir} la promotion de vingt pourcent"]) okay, voici la promotion du jour ^execute(FragmentExecutor, selection, promotion)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

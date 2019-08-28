@@ -1,0 +1,9 @@
+topic: ~collectlocker()
+
+proposal: %init Je viens d'ouvrir le casier numéro ~locker, tu peux maintenant prendre ton article.
+
+u:(~menu) ~confirmation ^execute(FragmentExecutor, home)
+
+u:(["parfait" "super" "c'est bon {merci}" "fin" "{["j'ai" "ai"]} [terminé fini]" "merci {beaucoup}"]) ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

@@ -2,7 +2,7 @@ topic: ~returnmain()
 
 proposal: %init Please show me your receipt so I can find the product you want to return.
 
-proposal: %ticketfound ~confirmation I found your items, tell me which one you want to return.
+proposal: %ticketfound ~confirmation, I found your items, tell me which one you want to return.
 
 dynamic: product_0
 
@@ -14,15 +14,20 @@ dynamic: product_3
 
 dynamic: product_4
 
-u:(home) alright, going home. ^execute(FragmentExecutor, home)
+u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
 
-u:(~product_0) ~product_0, ~confirmation  ^execute(StatusExecutor, clickreturn, 0)
+u:([demo "demo ticket"])  ~confirmation  ^execute(StatusExecutor, clickdemoreturn)
 
-u:(~product_1) ~product_1, ~confirmation  ^execute(StatusExecutor, clickreturn, 1)
+u:({~i_want_to} {return} ~product_0) ~product_0, ~confirmation  ^execute(StatusExecutor, clickreturn, 0)
 
-u:(~product_2) ~product_2, ~confirmation  ^execute(StatusExecutor, clickreturn, 2)
+u:({~i_want_to} {return} ~product_1) ~product_1, ~confirmation  ^execute(StatusExecutor, clickreturn, 1)
 
-u:(~product_3) ~product_3, ~confirmation  ^execute(StatusExecutor, clickreturn, 3)
+u:({~i_want_to} {return} ~product_2) ~product_2, ~confirmation  ^execute(StatusExecutor, clickreturn, 2)
 
-u:(~product_4) ~product_4, ~confirmation  ^execute(StatusExecutor, clickreturn, 4)
+u:({~i_want_to} {return} ~product_3) ~product_3, ~confirmation  ^execute(StatusExecutor, clickreturn, 3)
+
+u:({~i_want_to} {return} ~product_4) ~product_4, ~confirmation  ^execute(StatusExecutor, clickreturn, 4)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)
+
 

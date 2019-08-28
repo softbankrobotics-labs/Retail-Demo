@@ -1,0 +1,11 @@
+topic: ~returnproduct()
+
+proposal: %init Voilà ton article, est tu sûr de vouloir le retourner ?
+
+u:(~menu) ~confirmation ^execute(FragmentExecutor, home)
+
+u:(~retour)très bien, je retourne en arrière. ^execute(FragmentExecutor, returnmain)
+
+u:(["~vouloir retourner cet [article objet produit]" ~oui "Je le suis"]) ~confirmation ^execute(FragmentExecutor, returnreason)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

@@ -8,7 +8,7 @@
     android:layout_centerInParent="true">
 
     <TextView
-        android:id="@+id/BannerEmail"
+        android:id="@+id/text_enter_mail"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:layout_margin="15dp"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/EmailInput"
+            android:id="@+id/edit_mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
@@ -46,13 +46,13 @@
             android:textSize="35sp" />
 
         <Button
-            android:id="@+id/ButtonConfirmMail"
+            android:id="@+id/button_done_mail"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:text="@string/ButtonConfirm"
             android:background="@drawable/ui_white_r30"
-            android:textColor="@color/back"
+            android:textColor="@color/black"
             android:textSize="35sp" />
     </LinearLayout>
 
@@ -92,7 +92,5 @@
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         />
-
-
 
 </android.support.constraint.ConstraintLayout>

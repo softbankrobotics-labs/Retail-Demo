@@ -2,6 +2,14 @@ topic: ~feedback()
 
 concept:(ratings) ["perfect" "good" "okay" "bad" "awful"]
 
-proposal: %init Could you please rate your experience with me ?
+proposal: %init ^rand["Could you please rate your experience with me ?"
+    "I would really appreciate if you could rate your experience"
+    "could you give me some feedback"]
 
-u:(~ratings) %thanks thank you for your feedback, goodbye! ^execute(FragmentExecutor, home)
+u:({"it was"} ~ratings ) %thanks thank you for your feedback, goodbye! ^execute(FragmentExecutor, splashscreen)
+
+u:("bye" ~bye) ~bye ^execute(FragmentExecutor, splashscreen)
+
+u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

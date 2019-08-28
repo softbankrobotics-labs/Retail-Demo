@@ -2,8 +2,10 @@ topic: ~returnproduct()
 
 proposal: %init Here it is, are you sure that you want to return this product ?
 
-u:(home) alright, going home. ^execute(FragmentExecutor, home)
+u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
 
 u:(back) alright, going back. ^execute(FragmentExecutor, returnmain)
 
-u:(return item) ~confirmation ^execute(FragmentExecutor, returnreason)
+u:(["return item" ~yes ~i_am]) ~confirmation ^execute(FragmentExecutor, returnreason)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

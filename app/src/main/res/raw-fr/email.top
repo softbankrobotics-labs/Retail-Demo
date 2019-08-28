@@ -1,0 +1,11 @@
+topic: ~email()
+
+proposal: %init Entre ton email ici pour procéder à la commande.
+
+proposal: %validmail Merci,je t'envoie un mail immédiatement !^execute(FragmentExecutor, feedback)
+
+u:([produits produit ~retour]) okay, je retourne en arrière ^execute(FragmentExecutor, product_context)
+
+u:(~menu) ~confirmation ^execute(FragmentExecutor, home)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

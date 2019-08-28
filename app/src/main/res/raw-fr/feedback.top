@@ -1,0 +1,13 @@
+topic: ~feedback()
+
+concept:(ratings) ["parfait" "bien" "ok" "correct" "mauvais" "nul" "horrible"]
+
+proposal: %init Peux tu noter ton expérience avec moi.
+
+u:({"c'etait" "c'est"} ~ratings {merci}) %thanks merci ! Au revoir! ^execute(FragmentExecutor, splashscreen)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)
+
+u:(~menu) ~confirmation ^execute(FragmentExecutor, home)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

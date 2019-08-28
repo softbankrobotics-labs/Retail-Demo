@@ -1,129 +1,133 @@
 <resources>
 
-    <!--general -->
+    <!--app name-->
+    <!--default language is english-->
     <string name="app_name">RetailDemo</string>
+
+    <!--navigation buttons-->
     <string name="home">\"Home\"</string>
     <string name="next">\"Next\"</string>
+    <string name="custom">\"Customize\"</string>
+    <string name="finish">\"Finish\"</string>
     <string name="skip">\"Skip\"</string>
-    <string name="add">\"ADD\"</string>
-
-    <!-- fragment_add -->
-    <string name="ContextDescription">AddImage</string>
-
-    <!-- fragment_main_menu -->
+    <string name="yes">\"YES\"</string>
+    <string name="no">\"NO\"</string>
+    <string name="desk">DESK</string>
     <string name="id">\"Click and Collect\"</string>
     <string name="shop">\"Start shopping\"</string>
-    <string name="find">\"Find in Store\"</string>
     <string name="retuns">\"Return item\"</string>
-    <string name="context">\"Contextual action\"</string>
-    <string name="promotion">Sneakers man</string>
-    <string name="addBarText">Sale : 20% of this product, today only !</string>
-
-
-    <!-- fragment_gender -->
-    <string name="whoshopping">Are you shopping for a man or a woman ?</string>
-    <string name="man">\"Man\"</string>
-    <string name="woman">\"Woman\"</string>
     <string name="back">\"Back\"</string>
-    <string name="camera">Camera</string>
-
-    <!-- fragment_category -->
-    <string name="best">Best selling products</string>
+    <string name="promotion">Sneakers man</string>
     <string name="gender">\"Gender\"</string>
     <string name="category">\"Category\"</string>
     <string name="name">\"Name\"</string>
-
-    <!-- fragment_category -->
     <string name="product">\"Product\"</string>
-    <string name="refresh">\"refresh\"</string>
-
-    <!-- fragment_return -->
-    <string name="scan">Scan your Ticket here</string>
-    <string name="no_camera_permission">Camera not allowed</string>
-    <string name="ok">Ok</string>
-    <string name="testicket">I don\'t have a ticket </string>
-    <string name="confirmReturn">Are you sure that you want to return this Item ?</string>
-
-    <string name="tell_us_why">Why would you like to return this item ?</string>
+    <string name="refresh">\"Refresh\"</string>
+    <string name="black">\"Black\"</string>
+    <string name="grey">\"Grey\"</string>
+    <string name="red">\"Red\"</string>
+    <string name="tan">\"Tan\"</string>
+    <string name="buy">\"Buy\"</string>
+    <string name="order">\"Order\"</string>
     <string name="wrong_size">\"Wrong size\"</string>
+    <string name="size">\"Size\"</string>
     <string name="wrong_color">\"Wrong color\"</string>
     <string name="dont_like">\"Don\'t like it\"</string>
     <string name="dont_fit">\"Did not fit\"</string>
     <string name="dont_need">\"Don\'t need it\"</string>
     <string name="flawed">\"Product flawed\"</string>
+    <string name="testicket">\"Demo Ticket\"</string>
     <string name="submit">submit</string>
     <string name="reasons">Other reasons</string>
-    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
-
-
-    <!-- fragment_collect -->
-    <string name="textOrder">Enter your order number here</string>
-    <string name="TextValidOrder">Please, enter a valid Order number</string>
-    <string name="OrderNumber">Order number</string>
     <string name="open_locker">Open locker "</string>
     <string name="clear_pad">Clear</string>
-    <string name="locker_number">Items in Locker #03</string>
-    <string name="confim_id">Sign here to confirm your identity</string>
-    <string name="waring_sign">The signature cannot be empty</string>
-    <string name="items">Items</string>
-
-    <!-- LoadingFragment -->
-    <string name = "preparing">Preparing your experience with me, Please wait</string>
-
-    <!-- fragment_product -->
     <string name="other">\"Products\"</string>
-    <string name="number">\"##\"</string>
-
-    <string name="black">\"Black\"</string>
-    <string name="grey">\"Grey\"</string>
-    <string name="red">\"Red\"</string>
-    <string name="tan">\"Tan\"</string>
-
-    <string name="XSmale">\"41\"</string>
-    <string name="Smale">\"42\"</string>
-    <string name="Mmale">\"43\"</string>
-    <string name="Lmale">\"44\"</string>
-
-    <string name="XSfemale">\"37\"</string>
-    <string name="Sfemale">\"38\"</string>
-    <string name="Mfemale">\"39\"</string>
-    <string name="Lfemale">\"40\"</string>
-
-    <string name="buy">\"Buy\"</string>
-    <string name="order">\"Order\"</string>
-
-    <!-- fragmentSelection -->
-    <string name="dress">\"Dress\"</string>
-    <string name="sport">\"Sport\"</string>
-
-    <!-- EmailFragment -->
-    <string name="hintMail">email</string>
-    <string name="TextEnterMail">Please, enter your email here</string>
-    <string name="TextValidMail">Please, enter a valid email address</string>
     <string name="ButtonConfirm">Done</string>
-    <string name="outStock">Out of Stock</string>
-
-    <!-- FeedbackFragment -->
-    <string name="rate">Could you please rate your experience with me ?</string>
-
-    <!-- EmailFragment -->
-    <string name="map">here is where you need to go</string>
-
-    <!-- MenuLanguages  -->
     <string name="french">french</string>
     <string name="spanish">spanish</string>
     <string name="german">german</string>
-
-    <!-- menu Item  -->
-    <string name="item_name">item name</string>
-    <string name="price">00.00€</string>
     <string name="ret">return</string>
 
-    <!-- Ratings  -->
+
+    <!--switches-->
+    <string name="man">\"Man\"</string>
+    <string name="woman">\"Woman\"</string>
+    <string name="dress">\"Dress\"</string>
+    <string name="sport">\"Sport\"</string>
+
+    <!--other text-->
+    <string name="ContextDescription">AddImage</string>
+    <string name="no_camera_permission">Camera not allowed</string>
+    <string name="confirmReturn">Are you sure that you want to return this Item ?</string>
+    <string name="tell_us_why">Why would you like to return this item ?</string>
+    <string name="camera">Camera</string>
+    <string name="scan">Scan your Ticket here</string>
+    <string name="low_storage_error">QR code detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="textOrder">Enter your order number here</string>
+    <string name="textTicket">Enter your ticket number here</string>
+    <string name="TextValidOrder">Please, enter a valid Order number</string>
+    <string name="TextValidTicket">Please, enter a valid Ticket number</string>
+    <string name="TextEnterMail">Please, enter your email here</string>
+    <string name="TextValidMail">Please, enter a valid email address</string>
+    <string name="select">Select</string>
+    <string name="customize">Customize</string>
+    <string name="promo">Promotion</string>
+    <string name="locate">Locate</string>
+    <string name="ok">OK</string>
+    <string name="hintMail">email</string>
+    <string name="email_subject">Your order at Pepper Store</string>
+    <string name="rate">Could you please rate your experience with me ?</string>
+    <string name="locker_number">Items in Locker #</string>
+    <string name="confim_id">Sign here to confirm your identity</string>
+    <string name="waring_sign">The signature cannot be empty</string>
+    <string name="items">Items</string>
+    <string name="OrderNumber">Order number</string>
+    <string name="outStock">Out of Stock</string>
+    <string name="item_name">item name</string>
+    <string name="loading">Loading</string>
+    <string name="close">Do you want to close this app ?</string>
+    <string name="dialogCredentials">Enter email Credentials</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="signin">Sign in</string>
+    <string name="cancel">Cancel</string>
+
+    <!--prices-->
+    <string name="price">00.00€</string>
+    <string name="price_old">EUR 89.99</string>
+    <string name="price_sock">EUR 10.99</string>
+    <string name="price_sock_old">EUR 20.99</string>
+
+    <!--ratings-->
     <string name="perfect">\"Perfect\"</string>
     <string name="good">\"Good\"</string>
     <string name="okay">\"Okay\"</string>
     <string name="bad">\"Bad\"</string>
-    <string name="awful">\"Awful\"</string>
+
+
+    <string name="it_dress_man_black">Man dress shoes, black</string>
+    <string name="it_dress_man_grey">Man dress shoes, grey</string>
+    <string name="it_dress_man_red">Man dress shoes, red</string>
+    <string name="it_dress_man_tan">Man dress shoes, tan</string>
+
+    <string name="it_dress_woman_black">Woman dress shoe, black</string>
+    <string name="it_dress_woman_grey">Woman dress shoe, grey</string>
+    <string name="it_dress_woman_red">Woman dress shoe, red</string>
+    <string name="it_dress_woman_tan">Woman dress shoe, tan</string>
+
+    <string name="it_sport_man_black">Man sport sneakers, black</string>
+    <string name="it_sport_man_grey">Man sport sneakers,grey</string>
+    <string name="it_sport_man_red">Man sport sneakers, red</string>
+    <string name="it_sport_man_tan">Man sport sneakers, tan</string>
+
+    <string name="it_sport_woman_black">Woman sport sneakers, black</string>
+    <string name="it_sport_woman_grey">Woman sport sneakers, grey</string>
+    <string name="it_sport_woman_red">Woman sport sneakers, red</string>
+    <string name="it_sport_woman_tan">Woman sport sneakers, tan</string>
+
+    <string name="sc_dress_man">Classic Socks</string>
+    <string name="sc_dress_woman">Classic Socks</string>
+    <string name="sc_sport_man">Cool Socks</string>
+    <string name="sc_sport_woman">Cool Socks</string>
 
 </resources>

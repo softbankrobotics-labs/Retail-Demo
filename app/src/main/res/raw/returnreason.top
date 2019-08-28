@@ -4,18 +4,26 @@ concept:(numbers) [one two three four five six seven eight nine]
 
 proposal: %init Please place the product in locker number ~numbers . I would really appreciate if you could tell me why you are returning this product.
 
-u:(home) alright, going home. ^execute(FragmentExecutor, home)
+u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
 
 u:(back) alright, going back. ^execute(FragmentExecutor, returnprod)
 
-u:("wrong color") ~confirmation ^execute(FragmentExecutor, feedback)
+u:(["{because} {it's the} wrong color"
+    "{I} ["didn't" "don't"] like the color"
+    "{The} color was bad"]) ~confirmation ^execute(FragmentExecutor, feedback)
 
-u:("wrong size") ~confirmation ^execute(FragmentExecutor, feedback)
+u:(["{because} wrong size"
+    "{the} size was bad"
+    "{It was} too [small tiny]"
+    "{It was} too [big large]"
+    "{because} {it} did not fit"]) ~confirmation ^execute(FragmentExecutor, feedback)
 
-u:("product flawed") ~confirmation ^execute(FragmentExecutor, feedback)
+u:(["{because} {the} product {was} flawed"
+    "["the product" it] was [bad broken]"
+    "{there was} issue with the product"]) ~confirmation ^execute(FragmentExecutor, feedback)
 
-u:("don't need it") ~confirmation ^execute(FragmentExecutor, feedback)
+u:("{because} {I} ["didn't" "don't" "won't"] need it") ~confirmation ^execute(FragmentExecutor, feedback)
 
-u:("don't like it") ~confirmation ^execute(FragmentExecutor, feedback)
+u:("{because} {I} ["didn't" "don't"] ["like" "want"] ["it" "this product"] {anymore}") ~confirmation ^execute(FragmentExecutor, feedback)
 
-u:("did not fit") ~confirmation ^execute(FragmentExecutor, feedback)
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

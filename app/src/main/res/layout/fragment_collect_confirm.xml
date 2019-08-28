@@ -20,6 +20,7 @@
             android:layout_height="fill_parent">
 
             <TextView
+                android:id="@+id/text_locker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
@@ -32,26 +33,17 @@
                 android:backgroundTint="@color/light_gray"/>
 
             <ListView
+                android:id="@+id/list_item_collect_confirm"
                 android:clickable="false"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="78dp"
-                android:id="@+id/listviewCollectConfirm"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:orientation="vertical">
-
-
             </ListView>
 
-
-
-
         </LinearLayout>
-
-
-
-
 
             <LinearLayout
                 android:layout_gravity="center"
@@ -72,29 +64,27 @@
                     android:textSize="29sp"
                     android:padding="10dp"
                     android:textAlignment="center"
-                    android:textColor="@color/back"/>
+                    android:textColor="@color/black"/>
 
                 <com.github.gcacace.signaturepad.views.SignaturePad
-                    xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/signature_pad"
                     android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="305dp"
                     app:penColor="@android:color/black"
-                    android:background="@drawable/ui_white_r10"
-                    />
+                    android:background="@drawable/ui_white_r10"/>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:gravity="center_horizontal"
                     android:layout_height="fill_parent">
 
                     <Button
-                        android:id="@+id/clear"
+                        android:id="@+id/button_clear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/clear_pad"
-                        android:textColor="@color/back"
+                        android:textColor="@color/black"
                         android:textSize="30sp"
                         android:paddingStart="15dp"
                         android:paddingEnd="15dp"
@@ -117,11 +107,9 @@
 
                 </LinearLayout>
 
-
             </LinearLayout>
 
     </LinearLayout>
-
 
     <Button
         android:id="@+id/button_back_confirm"
@@ -138,8 +126,7 @@
         android:drawableStart="@drawable/ic_back"
         android:padding="10dp"
         android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        />
+        android:paddingEnd="15dp" />
 
     <Button
         android:id="@+id/button_home_confirm"
@@ -155,7 +142,6 @@
         android:backgroundTint="@color/light_gray"
         android:padding="10dp"
         android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        />
+        android:paddingEnd="15dp" />
 
 </android.support.constraint.ConstraintLayout>

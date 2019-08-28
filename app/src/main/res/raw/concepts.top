@@ -1,6 +1,12 @@
 topic: ~concepts()
 
+concept:(yes) [yes yeah indeed yep affirmative "good enough" definitely "{for} sure" alright "why not" ok okay certainly "very well" absolutely right exactly precisely perfect correct "of course"]
+
+concept:(no) ["{definitely absolutely} [no not]" nope "no way" never negative negatory "don't want" "not at all"]
+
 concept:(hello) [hello hi hey]
+
+concept:(number) ^rand[0 1 2 3 4 5 6 7 8 9]
 
 concept:(i_want_to) [want "I want" "I want to" "want to" "I would like to" "would like to"]
 
@@ -8,26 +14,22 @@ concept:(i_need_to) [need "I need" "I need to" "need to"]
 
 concept:(can_you) ["can you" "are you able to" "could you" "do you know how to"]
 
-concept:(you_are) [you're "you are"]
-
-concept:(you_have) ["you've {got gotten}" "you have {got gotten}"]
-
-concept:(do_you_have) ["{do} you have" "have you got"]
-
-concept:(are_you) [~you_are "are you"]
-
-concept:(may_i) "[can may should could] I"
-
-concept:(i_would)[I'd Id "I would"]
-
 concept:(i_am)[I'm i'm "I am" "i am"]
 
-concept:(confirmation)["okay!" "got it!" "perfect!"]
+concept:(confirmation) ^rand["okay" "got it" "alright" "sure"]
 
-concept:(can_i) [ "[can could may] [I we]"
-    "[I'd "I would"] like to"
-    "do you agree if I"
-    "is it possible [to "that I"]"]
+concept:(female) [girl woman women female sister mom mother aunt daughter wife]
 
-concept:(what_is) [ "{"~can_you tell me" "do you know" "tell me"} [
-        what's "what is"]"]
+concept:(male) [boy men man male brother dad father uncle son husband]
+
+concept:(sport)["sneakers" "tennis {shoes}" "sport {shoes}"]
+
+concept:(dress)["dress {shoes}" "classic {shoes}" "fancy {shoes}"]
+
+concept:(home)["{~i_want_to} {go} home {please}" "let's {go} home {please}"]
+
+concept:(back)["{~i_want_to} {go} back {please}" "let's {go} back {please}"]
+
+concept:(bye)["goodbye" "see you" "bye" "bye bye"]
+
+concept:(locker) ["$locker" "none"]

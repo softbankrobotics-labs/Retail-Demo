@@ -5,51 +5,194 @@
     android:background="@drawable/ui_grad_white_r0_a90"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/imageMain"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="520dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_dot_select"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="22sp"
+            android:button="@null"
+            android:width="130dp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:drawableBottom="@drawable/ui_circle_half_blue"
+            android:text="@string/select" />
+
+        <View
+            android:layout_width="100dp"
+            app:layout_constraintStart_toStartOf="@+id/text_dot_select"
+            app:layout_constraintEnd_toEndOf="@+id/text_dot_custom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="15sp"
+            android:layout_height="3dp"
+            android:background="@color/colorSpeechBarDraker" />
+
+        <TextView
+            android:id="@+id/text_dot_custom"
+            app:layout_constraintStart_toEndOf="@+id/text_dot_select"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="22sp"
+            android:button="@null"
+            android:width="130dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:drawableBottom="@drawable/ui_circle_half_stroke_blue"
+            android:text="@string/customize" />
+
+
+        <View
+            android:layout_width="100dp"
+            app:layout_constraintStart_toStartOf="@+id/text_dot_custom"
+            app:layout_constraintEnd_toEndOf="@+id/text_dot_promo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="15sp"
+            android:layout_height="3dp"
+            android:background="@color/colorSpeechBarDraker" />
+
+        <TextView
+            android:id="@+id/text_dot_promo"
+            app:layout_constraintStart_toEndOf="@+id/text_dot_custom"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="22sp"
+            android:width="130dp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:drawableBottom="@drawable/ui_circle_half_stroke_blue"
+            android:button="@null"
+            android:text="@string/promo" />
+
+        <View
+            android:layout_width="100dp"
+            app:layout_constraintStart_toStartOf="@+id/text_dot_promo"
+            app:layout_constraintEnd_toEndOf="@+id/text_dot_locate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="15sp"
+            android:layout_height="3dp"
+            android:background="@color/colorSpeechBarDraker" />
+        <TextView
+            android:id="@+id/text_dot_locate"
+            app:layout_constraintStart_toEndOf="@+id/text_dot_promo"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="22sp"
+            android:width="130dp"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:drawableBottom="@drawable/ui_circle_half_stroke_blue"
+            android:button="@null"
+            android:text="@string/locate" />
+    </android.support.constraint.ConstraintLayout>
+
+    <ViewSwitcher
+        android:id="@+id/image_switcher"
+        android:layout_marginTop="20dp"
+        android:layout_width="800dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/button_home_selection"
-        android:layout_width="800dp"
-        android:layout_height="0dp"
-        android:src="@drawable/it_dressman_gry_1" />
+        android:inAnimation="@anim/fade_in_500ms"
+        android:outAnimation="@anim/fade_out_500ms" >
 
+        <ImageView
+            android:id="@+id/image_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/item_name"
+            android:src="@drawable/it_dress_man_grey" />
+
+        <ImageView
+            android:id="@+id/image_secondary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/item_name"
+            android:src="@drawable/it_dress_man_red" />
+    </ViewSwitcher>
 
     <TextView
-        android:id="@+id/price"
+        android:id="@+id/text_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="40sp"
-        android:textColor="@color/back"
+        android:textColor="@color/black"
         android:padding="10dp"
         android:background="@drawable/ui_grad_yellow_r0_a0"
         android:layout_margin="10dp"
-        android:text="EUR 119.99"/>
+        android:text="@string/price"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/text_price_old"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="40sp"
+            android:textColor="@color/product_grey"
+            android:padding="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/price_old"/>
+
+        <View
+            android:layout_width="180dp"
+            app:layout_constraintStart_toStartOf="@+id/text_price_old"
+            app:layout_constraintEnd_toEndOf="@+id/text_price_old"
+            app:layout_constraintBottom_toBottomOf="@id/text_price_old"
+            app:layout_constraintTop_toTopOf="@id/text_price_old"
+            android:layout_height="3dp"
+            android:background="@color/product_grey" />
+    </android.support.constraint.ConstraintLayout>
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@id/button_home_selection"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_home_selection"
+        app:layout_constraintEnd_toStartOf="@id/button_next_selection"
         app:layout_constraintTop_toTopOf="@id/button_home_selection">
 
         <RadioGroup
-            android:checkedButton="@+id/woman"
             android:id="@+id/gender"
+            android:checkedButton="@+id/option1_1"
             android:padding="6dp"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_marginEnd="3dp"
             android:layout_height="match_parent"
             android:background="@drawable/ui_outline_blue"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/woman"
+                android:id="@+id/option1_1"
                 android:background="@drawable/ui_widget_background"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -60,7 +203,7 @@
                 android:text="@string/woman" />
 
             <RadioButton
-                android:id="@+id/man"
+                android:id="@+id/option1_2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -74,16 +217,16 @@
 
         <RadioGroup
             android:id="@+id/type"
-            android:checkedButton="@+id/sport"
+            android:checkedButton="@+id/option2_2"
             android:padding="6dp"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="match_parent"
             android:layout_marginStart="3dp"
             android:background="@drawable/ui_outline_blue"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/dress"
+                android:id="@+id/option2_1"
                 android:background="@drawable/ui_widget_background"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -94,7 +237,7 @@
                 android:text="@string/dress" />
 
             <RadioButton
-                android:id="@+id/sport"
+                android:id="@+id/option2_2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -136,8 +279,7 @@
         android:padding="10dp"
         android:textAllCaps="false"
         android:paddingEnd="10dp"
-        android:paddingStart="20dp"
-        android:text="@string/next"
+        android:text="@string/custom"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

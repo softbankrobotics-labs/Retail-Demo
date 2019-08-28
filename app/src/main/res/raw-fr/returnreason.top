@@ -1,0 +1,27 @@
+topic: ~returnreason()
+
+concept:(numbers) [un deux trois quatre cinq six sept huit neuf]
+
+proposal: %init Peux tu placer le produit dans le casier numéro ~numero . J'apprécierai également que tu me dises pourquoi tu retournes cet article
+
+u:(~menu) ~confirmation ^execute(FragmentExecutor, home)
+
+u:(~retour)très bien, je retourne en arrière ^execute(FragmentExecutor, returnprod)
+
+u:({["car" "parce que"]}["je ["n'aime" "n'apprécie"] pas [la cette] couleur"
+    "[la cette] couleur est ["moche" "de mauvais goût" "horrible" "hideuse"]"
+    "{Il} est ["de la mauvaise" "pas de la bonne"] couleur"]) ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:({["car" "parce que"]}["{il [est etait]}{la} taille {est} trop [grande grand petite petit]"
+    "["pas de la bonne" "mauvaise"] taille"
+    "{[il elle]} ne m'allait pas"]) ~confirmation^execute(FragmentExecutor, feedback)
+
+u:({["car" "parce que"]}[" ["cet article" "ce produit"][avais a] un [default problème]"
+    "["cet article" "ce produit"] est ["cassé" "abimé" "défectueux" "a un défaut"]"
+    "Il y [a avais] un problème avec [ce cet] [article produit]"])  ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:({["car" "parce que"]} je n'en ["n'avais" "ai"] [pas plus] besoin) ~confirmation,^execute(FragmentExecutor, feedback)
+
+u:({["car" "parce que"]} ["{je} ne l'aime [pas plus]" "{il} ne me plait [pas plus]"]) ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

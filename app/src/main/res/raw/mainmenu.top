@@ -1,12 +1,21 @@
 topic: ~mainmenu()
 
 
-proposal: %init ~hello ! I'm Pepper, { "What can I help you with?" "What would you like to do?" "How can I help you?"}
+proposal: %init ~hello , ^first ["$first==0^rand["my name is" "I'm"] Pepper, ^rand["I am here to" "I can"] help you pick your dream shoes, pick-up your online order or return an item, what would you like to do ? $first = 1"
+                                  "can I help with choosing your dream shoes, picking up your online order or return an item?" ]
 
-u:({~i_want_to} {~can_you} {let's} ["start shopping" "shop"]) ~confirmation  ^execute(FragmentExecutor, selection)
+u:(~hello) ~hello can I help with choosing your dream shoes, picking up your online order or return an item ?
+
+u:(["{~i_want_to} {~can_you} {let's} ["start {my} shopping" "shop"]"
+    "I want to {[pick buy]} {my} {dream} shoes"]) ~confirmation  ^execute(FragmentExecutor, selection)
 
 u:({~i_want_to} {~i_need_to} return {an} item) ~confirmation ^execute(FragmentExecutor, returnmain)
 
-u:(["click and collect" "{~i_want_to} {~i_need_to} collect {an} ["item" "product" "object"]"]) ~confirmation ^execute(FragmentExecutor, collect)
+u:(["click and collect" "{~i_want_to} {~i_need_to} ["collect" "pick up"] {an} ["something" "item" "product" "object"]"]) ~confirmation ^execute(FragmentExecutor, collect)
 
-u:(["promotion" "sale" "sales" "{man} sneakers on sale"]) ~confirmation ^execute(FragmentExecutor, collect)
+u:(["{interested in the} promotion" "sale" "sales" "{man} sneakers {man} on sale"
+    "{what is} the deal of today"
+    "give {me} the [twenty 20] percent off"
+    "{~i_want_to} {the} {man} sneakers {man}"]) okay, let me show you today's promotion. ^execute(FragmentExecutor, selection, promotion)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

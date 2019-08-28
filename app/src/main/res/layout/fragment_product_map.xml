@@ -3,138 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@drawable/ui_grad_blue_r0_a90"
     android:layout_height="fill_parent">
 
-    <ImageView
-        android:textAllCaps="false"
-        android:textAlignment="gravity"
-        android:gravity="center_horizontal"
-        android:id="@+id/Mapview"
-        android:layout_width="0dp"
+    <com.softbankrobotics.retaildemo.Views.MapSurfaceView
+        android:id="@+id/surface_map"
+        android:layout_width="880dp"
         android:layout_height="0dp"
-        android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@id/button_home_map"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="10dp"
-        android:src="@drawable/or_dressman" />
-
-
-    <ImageView
-        android:id="@+id/pellet_product_one_map"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/ic_shoe"
-        android:background="@drawable/ui_white_r30"
-        app:layout_constraintBottom_toBottomOf="@+id/Mapview"
-        app:layout_constraintEnd_toEndOf="@+id/Mapview"
-        app:layout_constraintHorizontal_bias="0.66"
-        app:layout_constraintStart_toStartOf="@+id/Mapview"
-        app:layout_constraintTop_toTopOf="@+id/Mapview"
-        app:layout_constraintVertical_bias="0.19999999" />
-
-    <ImageView
-        android:id="@+id/pellet_product_two_map"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/ui_white_r30"
-        android:src="@drawable/ic_socks"
-        app:layout_constraintBottom_toBottomOf="@+id/Mapview"
-        app:layout_constraintEnd_toEndOf="@+id/Mapview"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="@+id/Mapview"
-        app:layout_constraintTop_toTopOf="@+id/Mapview"
-        app:layout_constraintVertical_bias="0.04000002" />
-
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"
-        android:background="@drawable/ui_grad_blue_r10_a180"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button_home_map"
-        app:layout_constraintEnd_toEndOf="@id/button_home_map"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/items"
-            android:textAlignment="center"
-            android:textSize="30sp"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:background="@color/transparent_gray"/>
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/product_preview_one"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/it_dressman_gry_1"
-                android:background="@drawable/ui_white_r30"
-                android:padding="10dp"/>
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/ui_white_r30"
-                android:src="@drawable/ic_shoe"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/product_preview_one"
-                app:layout_constraintEnd_toEndOf="parent"/>
-        </android.support.constraint.ConstraintLayout>
-
-
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/product_preview_two"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/sc_dressman"
-                android:background="@drawable/ui_white_r30"
-                android:padding="10dp"/>
-
-            <ImageView
-                android:id="@+id/pellet_product_two"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/ic_socks"
-                android:background="@drawable/ui_white_r30"
-
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/product_preview_two"
-                app:layout_constraintEnd_toEndOf="parent"/>
-        </android.support.constraint.ConstraintLayout>
-
-    </LinearLayout>
-
+        android:layout_margin="10dp" />
 
     <Button
         android:id="@+id/button_home_map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
         android:background="@drawable/ui_white_r30"
         android:backgroundTint="@color/light_gray"
         android:padding="10dp"
@@ -142,8 +29,64 @@
         android:text="@string/home"
         android:textColor="@color/dark_gray"
         android:textSize="30sp"
-        android:layout_marginStart="160dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/button_finish_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/ui_white_r30"
+        android:backgroundTint="@color/light_gray"
+        android:padding="10dp"
+        android:textAllCaps="false"
+        android:text="@string/finish"
+        android:textColor="@color/dark_gray"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/ui_blue_topright_rounded"/>
+
+    <View
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/ui_blue_topleft_rounded"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_face_pepper"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.74" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ui_grad_blue_r10_a0"
+        android:padding="10dp"
+        android:text="@string/desk"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06999999" />
 
 </android.support.constraint.ConstraintLayout>

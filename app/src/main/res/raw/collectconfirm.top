@@ -1,9 +1,12 @@
 topic: ~collectconfirm()
 
-proposal: %init Perfect, I found your order, here is the locker in which it is located. You will need to sign here in order to open it.
+proposal: %init Perfect, I found your order, here is the locker in which it is located. You will need to sign here in order to open it. $signed = false
 
-u:(open locker) %locker okay ! the locker is now open, you can pickup your item. ^execute(FragmentExecutor, feedback)
+u:(["open locker" "open it"]) %locker ^first[ "$signed == true okay ! let me open the locker for you."
+                                "Sorry, you will need to sign before opening the locker."] ^execute(FragmentExecutor, locker)
 
-u:(home) sure, going home. ^execute(FragmentExecutor, home)
+u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
 
-u:(back) okay I'm going back ^execute(FragmentExecutor, selection)
+u:(~back) okay I'm going back ^execute(FragmentExecutor, selection)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

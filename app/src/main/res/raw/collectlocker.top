@@ -1,0 +1,9 @@
+topic: ~collectlocker()
+
+proposal: %init I just opened the locker number ~locker, you can now pickup your item.
+
+u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
+
+u:(["finish" "end" "~i_am finished" "~i_am done" "thanks" "thank you"]) ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:({~confirmation} ~bye) ~bye ^execute(FragmentExecutor, splashscreen)

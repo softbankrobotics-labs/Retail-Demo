@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/message"
+        android:id="@+id/text_return_reason"
         android:background="@drawable/ui_white_r10"
         android:backgroundTint="@color/background_image"
         android:layout_width="match_parent"
@@ -15,9 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:text="@string/tell_us_why"
-        android:textColor="@color/back"
+        android:textColor="@color/black"
         android:padding="10dp"
-        android:textSize="38dp"
+        android:textSize="38sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +27,7 @@
         android:layout_margin="15dp"
         android:layout_height="100dp"
         android:text="@string/wrong_color"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:textAllCaps="false"
         android:background="@drawable/ui_grad_blue_r10_a0"
         app:layout_constraintEnd_toStartOf="@+id/button_flawed"
@@ -39,7 +39,7 @@
         android:layout_margin="15dp"
         android:layout_height="100dp"
         android:text="@string/flawed"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:background="@drawable/ui_grad_blue_r10_a0"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
         android:layout_margin="15dp"
         android:layout_height="100dp"
         android:text="@string/wrong_size"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:background="@drawable/ui_grad_blue_r10_a0"
         android:textAllCaps="false"
         app:layout_constraintStart_toEndOf="@+id/button_flawed"
@@ -64,7 +64,7 @@
         android:layout_margin="15dp"
         android:layout_height="100dp"
         android:text="@string/dont_need"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:background="@drawable/ui_grad_blue_r10_a0"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@id/button_dont_like"
@@ -77,13 +77,13 @@
         android:layout_height="100dp"
         android:layout_margin="15dp"
         android:text="@string/dont_like"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:textAllCaps="false"
         android:background="@drawable/ui_grad_blue_r10_a0"
         app:layout_constraintBottom_toTopOf="@id/button_home_reason"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/message" />
+        app:layout_constraintTop_toBottomOf="@+id/text_return_reason" />
 
     <Button
         android:id="@+id/button_dont_fit"
@@ -92,27 +92,29 @@
         android:background="@drawable/ui_grad_blue_r10_a0"
         android:layout_margin="15dp"
         android:text="@string/dont_fit"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@id/button_dont_like"
         app:layout_constraintTop_toTopOf="@id/button_dont_like"
         app:layout_constraintStart_toEndOf="@+id/button_dont_like" />
 
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_margin="15dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_dont_like">
 
         <EditText
-            android:id="@+id/EmailInput"
-            android:layout_width="720dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_submit"
+            android:layout_width="0dp"
+            android:id="@+id/edit_mail"
             android:layout_height="wrap_content"
             android:ems="10"
             android:layout_marginStart="10dp"
@@ -122,14 +124,17 @@
             android:textSize="40sp" />
 
         <Button
-            android:background="@drawable/ui_grad_blue_r10_a0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/button_submit"
-            android:layout_width="190dp"
+            android:background="@drawable/ui_grad_blue_r10_a0"
+            android:layout_width="wrap_content"
+            android:padding="10dp"
             android:layout_height="wrap_content"
             android:text="@string/submit"
             android:textColor="@color/white"
             android:textSize="40sp" />
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
     <Button
         android:id="@+id/button_back_reason"
@@ -147,8 +152,7 @@
         android:drawableStart="@drawable/ic_back"
         android:padding="10dp"
         android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        />
+        android:paddingEnd="15dp" />
 
     <Button
         android:id="@+id/button_home_reason"
@@ -165,7 +169,6 @@
         android:backgroundTint="@color/light_gray"
         android:padding="10dp"
         android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        />
+        android:paddingEnd="15dp" />
 
 </android.support.constraint.ConstraintLayout>

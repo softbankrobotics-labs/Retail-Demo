@@ -1,0 +1,9 @@
+topic: ~productmap()
+
+proposal: %init Parfait, nous sommes en train de préparer ces articles pour toi, il suffit d'aller à la réception juste derrière moi, pour que mes collègues humains s'occupent de toi.
+
+u:(~menu) ~confirmation ^execute(FragmentExecutor, home)
+
+u:(["parfait" "super" "c'est bon {merci}" "fin" "{["j'ai" "ai"]} [terminé fini]" "merci {beaucoup}"]) ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

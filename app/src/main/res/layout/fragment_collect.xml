@@ -8,7 +8,7 @@
     android:layout_height="fill_parent">
 
     <TextView
-        android:id="@+id/white_box"
+        android:id="@+id/text_scan_ticket"
         android:layout_width="0dp"
         android:textSize="30sp"
         android:layout_marginTop="10dp"
@@ -20,21 +20,21 @@
         android:paddingBottom="15dp"
         android:textColor="@color/colorSpeechBarDraker"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/frame"
-        app:layout_constraintStart_toStartOf="@id/frame"
+        app:layout_constraintEnd_toEndOf="@id/frame_item"
+        app:layout_constraintStart_toStartOf="@id/frame_item"
         android:background="@drawable/ui_white_r10"
         />
 
-    <com.example.retaildemo.Camera.CameraSourcePreview
+    <com.softbankrobotics.retaildemo.Camera.CameraSourcePreview
+        android:id="@+id/camera_preview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/camera_preview"
         android:layout_width="450dp"
         android:layout_height="325dp"
         android:layout_margin="20dp" />
 
     <View
-        android:id="@+id/frame"
+        android:id="@+id/frame_item"
         android:layout_width="470dp"
         android:layout_height="340dp"
         app:layout_constraintTop_toTopOf="@id/camera_preview"
@@ -53,46 +53,40 @@
         app:layout_constraintEnd_toEndOf="@id/camera_preview"
         android:src="@drawable/ui_camera_overlay"/>
 
-
-
-
     <TextView
-        android:id="@+id/context_text_order"
-        android:textSize="30dp"
+        android:id="@+id/text_order_number"
+        android:textSize="30sp"
         android:layout_width="0dp"
         android:text="@string/textOrder"
         android:layout_margin="10dp"
         android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="@id/order_input"
-        app:layout_constraintEnd_toEndOf="@id/order_input"
-        app:layout_constraintBottom_toTopOf="@+id/order_input"
+        app:layout_constraintStart_toStartOf="@id/edit_order_number"
+        app:layout_constraintEnd_toEndOf="@id/edit_order_number"
+        app:layout_constraintBottom_toTopOf="@+id/edit_order_number"
         android:drawableBottom="@drawable/ic_down"
         android:layout_height="wrap_content" />
 
-
-
-
     <EditText
-        android:id="@+id/order_input"
+        android:id="@+id/edit_order_number"
         android:layout_width="410dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/OrderNumber"
-        android:inputType="textEmailAddress"
+        android:inputType="number"
         android:textSize="30sp"
         android:layout_margin="10dp"
-        app:layout_constraintTop_toTopOf="@+id/white_box"
-        app:layout_constraintBottom_toBottomOf="@+id/white_box"
-        app:layout_constraintStart_toEndOf="@+id/white_box"
+        app:layout_constraintTop_toTopOf="@+id/text_scan_ticket"
+        app:layout_constraintBottom_toBottomOf="@+id/text_scan_ticket"
+        app:layout_constraintStart_toEndOf="@+id/text_scan_ticket"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
     <Button
-        app:layout_constraintStart_toStartOf="@id/order_input"
-        app:layout_constraintEnd_toEndOf="@id/order_input"
-        app:layout_constraintTop_toBottomOf="@id/order_input"
+        android:id="@+id/button_done_order_number"
+        app:layout_constraintStart_toStartOf="@id/edit_order_number"
+        app:layout_constraintEnd_toEndOf="@id/edit_order_number"
+        app:layout_constraintTop_toBottomOf="@id/edit_order_number"
         android:background="@drawable/ui_white_r30"
-        android:id="@+id/button_confirm_order"
         android:layout_width="150dp"
         android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
@@ -117,6 +111,22 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_test_ticket_collect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/ui_white_r30"
+        android:backgroundTint="@color/light_gray"
+        android:padding="10dp"
+        android:text="@string/testicket"
+        android:textAllCaps="false"
+        android:textColor="@color/dark_gray"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_home_collect" />
+
 
 
 </android.support.constraint.ConstraintLayout>

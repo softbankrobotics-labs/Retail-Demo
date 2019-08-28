@@ -1,0 +1,15 @@
+topic: ~productupsell()
+
+proposal: %init Aujourd'hui seulement tu peux profiter d'une promotion de cinquante pourcent sur cette paire de chaussettes, veux tu que je les ajoutes à ton panier ?
+
+u:(["[rajoute ajoute] {les}" ~oui]) Parfait, c'est fait ^execute(FragmentExecutor, buy, add)
+
+u:(~retour)très bien, je retourne en arrière. ^execute(FragmentExecutor, selection)
+
+u:(["~non {["Je ne les veux pas" "merci"]}" "~je_suis pas intéressé"]) okay ! ^execute(FragmentExecutor, buy)
+
+u:(~menu) ~confirmation ^execute(FragmentExecutor, home)
+
+u:(["peut etre" "pourquoi pas" "je ne suis pas sur"]) je ne met qu'une chaussette alors ?
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

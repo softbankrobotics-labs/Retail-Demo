@@ -3,11 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_grad_blue_r0_a90">
 
     <TextView
-        android:background="@drawable/ui_grad_blue_r10_a0"
-        android:id="@+id/questionReturn"
+        android:id="@+id/text_rating"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -31,30 +32,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-
-
-
-
-
-
-
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageButton
                 android:id="@+id/button_bad"
+                android:padding="20dp"
                 android:src="@drawable/rt_x"
                 android:layout_width="190dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:background="@null"/>
+                android:background="@drawable/ui_rating_bad_r10_a0"/>
 
             <TextView
-                android:background="@drawable/ui_rating_bad_r10_a0"
+                android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
@@ -66,22 +61,23 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageButton
                 android:id="@+id/button_okay"
+                android:padding="20dp"
                 android:src="@drawable/rt_xx"
                 android:layout_width="190dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:background="@null"/>
+                android:background="@drawable/ui_rating_ok_r10_a0"/>
 
             <TextView
-                android:background="@drawable/ui_rating_ok_r10_a0"
+                android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
@@ -93,22 +89,23 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageButton
                 android:id="@+id/button_good"
+                android:padding="20dp"
                 android:src="@drawable/rt_xxx"
                 android:layout_width="190dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:background="@null"/>
+                android:background="@drawable/ui_rating_good_r10_a0"/>
 
             <TextView
-                android:background="@drawable/ui_rating_good_r10_a0"
+                android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
@@ -120,22 +117,23 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageButton
                 android:id="@+id/button_perfect"
+                android:padding="20dp"
                 android:src="@drawable/rt_xxxx"
                 android:layout_width="190dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
-                android:background="@null"/>
+                android:background="@drawable/ui_rating_perfect_r10_a0"/>
 
             <TextView
-                android:background="@drawable/ui_rating_perfect_r10_a0"
+                android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
@@ -147,5 +145,24 @@
         </LinearLayout>
         
     </LinearLayout>
+
+
+    <Button
+        android:id="@+id/button_home_feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="15dp"
+        android:textSize="30sp"
+        android:text="@string/home"
+        android:textColor="@color/dark_gray"
+        android:textAllCaps="false"
+        android:background="@drawable/ui_white_r30"
+        android:backgroundTint="@color/light_gray"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        />
 
 </android.support.constraint.ConstraintLayout>

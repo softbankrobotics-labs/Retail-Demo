@@ -1,40 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/ui_grad_blue_r0_a90"
-    android:layout_height="match_parent">
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <TextView
-        android:id="@+id/TextWaitingApp"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_margin="15dp"
-        android:layout_marginTop="16dp"
-        android:padding="15dp"
-        android:text="@string/preparing"
-        android:textAllCaps="false"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/text_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
-    <ProgressBar
-        android:id="@+id/loading_spinner"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_gravity="center"
-        android:indeterminateTint="@color/white"
-        android:indeterminateTintMode="src_atop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/loading"
+        android:textSize="100sp"
+        android:textColor="@color/black"
+        android:paddingBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/pepper_retail"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/ui_pepper_retail"
+        android:contentDescription="@string/item_name"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/return_logo"
+        android:layout_width="200dp"
+        android:padding="20dp"
+        android:background="@drawable/ui_circle_grad_blue"
+        android:src="@drawable/ic_resizable_shop"
+        android:layout_height="200dp"
+        android:layout_marginEnd="100dp"
+        android:contentDescription="@string/item_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/shopping_logo"
+        android:layout_width="200dp"
+        android:padding="30dp"
+        android:background="@drawable/ui_circle_grad_blue"
+        android:src="@drawable/ic_resizable_return"
+        android:layout_height="200dp"
+        android:contentDescription="@string/item_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/qrcode_logo"
+        android:layout_width="200dp"
+        android:layout_marginStart="100dp"
+        android:background="@drawable/ui_circle_grad_blue"
+        android:src="@drawable/ui_qrcode_logo"
+        android:layout_height="200dp"
+        android:padding="20dp"
+        android:contentDescription="@string/item_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </android.support.constraint.ConstraintLayout>

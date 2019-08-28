@@ -1,0 +1,9 @@
+topic: ~collect()
+
+proposal: %init Scanne ton code-barres ou entre ton numéro de commande.
+
+u:(~menu) ~confirmation ^execute(FragmentExecutor, home)
+
+u:([démo "ticket démo"])  ~confirmation  ^execute(StatusExecutor, clickdemocollect)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

@@ -1,31 +1,33 @@
 topic: ~product()
 
-proposal: %init Here are all the different sizes and colors for this item.
+proposal: %init Please select your shoes size and tell me what color you would prefer. $color=none $size=none
 
-u:({~i_want_to} {them} {in} black) ^execute(StatusExecutor, color, blk) here it is in black.
-u:({~i_want_to} {them} {in} grey) ^execute(StatusExecutor, color, gry) here it is in grey.
-u:({~i_want_to} {them} {in} red) ^execute(StatusExecutor, color, red) here it is in red.
-u:({~i_want_to} {them} {in} tan) ^execute(StatusExecutor, color, tan) here it is in tan.
+concept:(colors): [black grey red tan]
+concept:(sizes):[35 36 37 38 39 40 41 42 43 44 45 46]
 
-u:({my size {is}} thirty five) ^execute(StatusExecutor, check, 35) ^enableThenGoto(okay)
-u:({my size {is}} thirty six) ^execute(StatusExecutor, check, 36) ^enableThenGoto(okay)
-u:({my size {is}} thirty seven) ^execute(StatusExecutor, check, 37)^enableThenGoto(okay)
-u:({my size {is}} thirty eight) ^execute(StatusExecutor, check, 38) ^enableThenGoto(okay)
-u:({my size {is}} thirty nine) ^execute(StatusExecutor, check, 39) ^enableThenGoto(okay)
-u:({my size {is}} forty) ^execute(StatusExecutor, check, 40) ^enableThenGoto(okay)
-u:({my size {is}} forty one) ^execute(StatusExecutor, check, 41)^enableThenGoto(okay)
-u:({my size {is}} forty two) ^execute(StatusExecutor, check, 42) ^enableThenGoto(okay)
-u:({my size {is}} forty three) ^execute(StatusExecutor, check, 43) ^enableThenGoto(okay)
-u:({my size {is}} forty four) ^execute(StatusExecutor, check, 44) ^enableThenGoto(okay)
-u:({my size {is}} forty five) ^execute(StatusExecutor, check, 45)^enableThenGoto(okay)
-u:({my size {is}} forty six) ^execute(StatusExecutor, check, 46) ^enableThenGoto(okay)
+u:({~i_want_to} {[them it]} {in} {color} _~colors and {["my size {is}" "in"]} {size} _~sizes)
+    $color=$1 $size=$2 ^execute(StatusExecutor, size_color, $size $color) alright, here they are in $color and size $size , would you like to buy them ?
 
-proposal: %okay Okay, I selected that size
+u:({["{~i_want_to} {[them it]} {in} size" "my size is"]} _~sizes and {["I want them in" "{in} {color}"]} _~colors)
+    $size=$1 $color=$2 ^execute(StatusExecutor, size_color, $size $color) alright, here they are in $color and size $size , would you like to buy them ?
 
-proposal: %impossible Sorry this size is not available
+u:({~i_want_to} {[them it]} {in} {color} _~colors) $color=$1  ^execute(StatusExecutor, color, $color)
+    ^first["$size==none here it is in $color . now please tell me what size you would like."
+           "alright, here they are in $color and size $size , would you like to buy them?"]
 
-u:(products) okay, I'm going back. ^execute(FragmentExecutor, selection)
+u:({my size {is}} _~sizes) $size=$1  ^execute(StatusExecutor, check, $size)
+    ^first["$color==none Okay, I selected the size $size . now please tell me what color do you prefer."
+           "alright, here they are in $color and size $size , would you like to buy them?"]
 
-u:(home) alright, going home. ^execute(FragmentExecutor, home)
+proposal: %okay Okay, I selected the size $size
 
-u:([buy order]) perfect! ^execute(FragmentExecutor, upsell)
+u:([products product ~back]) okay, I'm going back. ^execute(FragmentExecutor, selection)
+
+u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
+
+u:([~yes "buy {it}" order]) perfect! ^execute(FragmentExecutor, upsell)
+
+u:(~no) Okay then. please select an other size or color.
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)
+

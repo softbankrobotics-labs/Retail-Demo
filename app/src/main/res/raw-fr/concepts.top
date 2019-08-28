@@ -1,0 +1,33 @@
+topic: ~concepts()
+
+concept:(oui) [oui effectivement "pourquoi pas" ok certainement "tout à fait" parfaitement exactement parfait "bien sûr"]
+
+concept:(non) ["{Absolument absolument} pas" nope non jamais négatif "pas du tout"]
+
+concept:(bonjour) [bonjour salut hey hello coucou]
+
+concept:(numero) ^rand[0 1 2 3 4 5 6 7 8 9]
+
+concept:(vouloir) ["je veux" "je voudrais" "j'aimerais"]
+
+concept:(devoir) ["j'ai besion" "besoin" "je dois"]
+
+concept:(je_suis)["Je suis" "suis"]
+
+concept:(confirmation) ^rand["okay" "d'accord" "ça marche" "compris"]
+
+concept:(femme) [fille femme soeur mère tante fille épouse]
+
+concept:(homme) [garçon homme mâle frère papa père oncle fils mari]
+
+concept:(sport)["{chaussures de} ["tennis" "sport"]" "baskets"]
+
+concept:(chic) {chaussures} ["classiques" "de ville" "de soirée" "habillées" "chic"]
+
+concept:(menu)["menu" "menu principal"]
+
+concept:(retour)["retour" "retour arrière" "retourner" "en arrière"]
+
+concept:(bye)["Au revoir" "ciao" "a plus tard" "à bientôt" "à la prochaine" "au plaisir" " bye bye" "bonsoir" "salut"]
+
+concept:(locker) ["$locker" "none"]

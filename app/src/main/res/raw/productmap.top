@@ -1,7 +1,9 @@
 topic: ~productmap()
 
-proposal: %init We have this in store ! it's right over there.
+proposal: %init Perfect, we are getting these items ready for you, just go to the desk right over their, so that my human colleagues can help you.
 
-u:(home) okay, going home ^execute(FragmentExecutor, home)
+u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
 
-u:(back) okay I'm going back ^execute(FragmentExecutor, selection)
+u:({okay}["finish" "end" "thanks" "thank you" "~i_am done" "~i_am finished"]) ~confirmation ^execute(FragmentExecutor, feedback)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

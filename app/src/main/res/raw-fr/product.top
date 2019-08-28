@@ -1,0 +1,33 @@
+topic: ~product()
+
+proposal: %init Peux tu me donner ta pointure de chaussures, et la couleur que tu préfère. $color=none $size=none
+
+concept:(couleurs): [noir gris rouge beige]
+concept:(tailles):[35 36 37 38 39 40 41 42 43 44 45 46]
+
+u:({je les [veux voudrais]} {de} {couleur} _~couleurs et {["en [taille pointure]" "ma taille"] est} _~tailles)
+    $color=$1 $size=$2 ^execute(StatusExecutor, size_color, $size $color) très bien les voilà de couleur, $color et en taille $size , cela te conviens t'il ?
+
+u:({je les [veux voudrais]} {["en [taille pointure]" "ma taille"]} _~tailles et {de} {couleur} _~couleurs)
+    $size=$1 $color=$2 ^execute(StatusExecutor, size_color, $size $color) très bien les voilà de couleur, $color et en taille $size , cela te conviens t'il ?
+
+u:({je les [veux voudrais]} {de} {couleur} _~couleurs ) $color=$1  ^execute(StatusExecutor, color, $color)
+    ^first["$size==none les voila en $color . maintenant dit moi quelle est ta pointure"
+           "okay, les voilà en $color et en pointure $size , cela te convient t'il ?"]
+
+u:({je les [veux voudrais]} {["en [taille pointure]" "ma taille"]} _~tailles) $size=$1  ^execute(StatusExecutor, check, $size)
+    ^first["$color==none Okay, j'ai sélectionné la pointure $size . maintenant dit moi quelle couleur tu préfère"
+            "okay, les voila en $color et en pointure $size , cela te conviens t'il ?"]
+
+proposal: %okay Ok, j'ai choisi cette pointure $size
+
+u:([produit ~retour]) très bien, je retourne en arrière. ^execute(FragmentExecutor, selection)
+
+u:(~menu) ~confirmation ^execute(FragmentExecutor, home)
+
+u:(["~oui" "{[~vouloir ~devoir]} {les} [avoir acheter commander]"]) parfait! ^execute(FragmentExecutor, upsell)
+
+u:(~non) D'accord, choisit une autre taille ou autre couleur.
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)
+

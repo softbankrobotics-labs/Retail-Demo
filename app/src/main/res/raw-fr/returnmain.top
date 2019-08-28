@@ -1,0 +1,33 @@
+topic: ~returnmain()
+
+proposal: %init Montre moi ton ticket de caisse pour que je puisse retrouver le produit que tu veux rendre.
+
+proposal: %ticketfound j'ai trouvé ta commande, dis moi quel article tu souhaite retourner.
+
+dynamic: product_0
+
+dynamic: product_1
+
+dynamic: product_2
+
+dynamic: product_3
+
+dynamic: product_4
+
+u:(~menu) ~confirmation ^execute(FragmentExecutor, home)
+
+u:([démo "ticket démo"])  ~confirmation  ^execute(StatusExecutor, clickdemoreturn)
+
+u:({~vouloir [retourner rendre]} ~product_0) ~product_0, ~confirmation  ^execute(StatusExecutor, clickreturn, 0)
+
+u:({~vouloir [retourner rendre]} ~product_1) ~product_1, ~confirmation  ^execute(StatusExecutor, clickreturn, 1)
+
+u:({~vouloir [retourner rendre]} ~product_2) ~product_2, ~confirmation  ^execute(StatusExecutor, clickreturn, 2)
+
+u:({~vouloir [retourner rendre]} ~product_3) ~product_3, ~confirmation  ^execute(StatusExecutor, clickreturn, 3)
+
+u:({~vouloir [retourner rendre]} ~product_4) ~product_4, ~confirmation  ^execute(StatusExecutor, clickreturn, 4)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)
+
+

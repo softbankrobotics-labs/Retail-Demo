@@ -1,12 +1,15 @@
 topic: ~productupsell()
 
-proposal: %init Today only you can get hese matching socks with your shoes for fifty precent off, would you like to add them to your cart ?
+proposal: %init Because you are shopping with me you can get these matching socks for fifty percent off, would you like to add them to your cart ?
 
-u:(["add" "yes{please}"]) Perfect, I added them ^execute(FragmentExecutor, buy, add)
+u:(["add" "~yes {["please" "I would"]}"]) Perfect, I added them ^execute(FragmentExecutor, buy, add)
 
-u:(back) alright, going back. ^execute(FragmentExecutor, selection)
+u:([products product back]) alright, going back. ^execute(FragmentExecutor, selection)
 
-u:(["skip" "no {I don't want them}"]) sure ! ^execute(FragmentExecutor, buy)
+u:(["I don't" "skip" "~no {["I don't want them" "thanks" "thank you"]}"]) sure ! ^execute(FragmentExecutor, buy)
 
+u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
 
+u:([maybe probably]) should I add only one sock then ?
 
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

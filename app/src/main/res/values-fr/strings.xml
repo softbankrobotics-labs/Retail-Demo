@@ -1,0 +1,131 @@
+<resources>
+
+    <!--app name-->
+    <string name="app_name">RetailDemo</string>
+
+    <!--navigation buttons-->
+    <string name="home">\"Menu\"</string>
+    <string name="next">\"Suivant\"</string>
+    <string name="custom">\"Configurer\"</string>
+    <string name="finish">\"Fin\"</string>
+    <string name="skip">\"Passer\"</string>
+    <string name="yes">\"OUI\"</string>
+    <string name="no">\"NON\"</string>
+    <string name="desk">DESK</string>
+    <string name="id">\"Click and Collect\"</string>
+    <string name="shop">\"Faire du Shopping\"</string>
+    <string name="retuns">\"Retourner un article\"</string>
+    <string name="back">\"Retour\"</string>
+    <string name="promotion">Tennis Homme</string>
+    <string name="gender">\"Genre\"</string>
+    <string name="category">\"Catégorie\"</string>
+    <string name="name">\"Nom\"</string>
+    <string name="product">\"Produit\"</string>
+    <string name="refresh">\"Rafraîchir\"</string>
+    <string name="black">\"Noir\"</string>
+    <string name="grey">\"Gris\"</string>
+    <string name="red">\"Rouge\"</string>
+    <string name="tan">\"Beige\"</string>
+    <string name="buy">\"Acheter\"</string>
+    <string name="order">\"Commander\"</string>
+    <string name="wrong_size">\"Mauvaise taille\"</string>
+    <string name="size">Taille</string>
+    <string name="wrong_color">\"Mauvaise Couleur\"</string>
+    <string name="dont_like">\"Je ne l\'aime pas\"</string>
+    <string name="dont_fit">\"Ne m\'allais pas\"</string>
+    <string name="dont_need">\"Pas besion\"</string>
+    <string name="flawed">\"Le produit a un default\"</string>
+    <string name="testicket">\"Ticket démo\"</string>
+    <string name="submit">soumettre</string>
+    <string name="reasons">Autres</string>
+    <string name="open_locker">Ouvrir casier "</string>
+    <string name="clear_pad">Effacer</string>
+    <string name="other">\"Produits\"</string>
+    <string name="ButtonConfirm">Fini</string>
+    <string name="french">Français</string>
+    <string name="spanish">Espagnol</string>
+    <string name="german">Allemand</string>
+    <string name="ret">retour</string>
+
+    <!--switches-->
+    <string name="man">\"Homme\"</string>
+    <string name="woman">\"Femme\"</string>
+    <string name="dress">\"Chic\"</string>
+    <string name="sport">\"Sport\"</string>
+
+    <!--other text-->
+    <string name="ContextDescription">Image</string>
+    <string name="no_camera_permission">Caméra non autorisé</string>
+    <string name="confirmReturn">Es-tu sûr de vouloir rendre ce produit ?</string>
+    <string name="tell_us_why">Pourquoi veux tu rendre ce produit ?</string>
+    <string name="camera">Camera</string>
+    <string name="scan">Scanne ton ticket ici</string>
+    <string name="low_storage_error">Les dépendances du détecteur de QR code ne peuvent pas être téléchargées en raison du faible stockage de l\'appareil</string>
+    <string name="textOrder">Entre ton numéro de commande ici</string>
+    <string name="textTicket">Entre la référence de ton billet ici</string>
+    <string name="TextValidOrder">Le numéro de commande doit être valide</string>
+    <string name="TextValidTicket">La référence du billet doit être valide</string>
+    <string name="TextEnterMail">Entre ton email ici</string>
+    <string name="TextValidMail">l\'adresse email doit être valide</string>
+    <string name="select">Selection</string>
+    <string name="customize">Configurer</string>
+    <string name="promo">Promotion</string>
+    <string name="locate">Localiser</string>
+    <string name="ok">OK</string>
+    <string name="hintMail">email</string>
+    <string name="email_subject">Votre Commande chez Pepper store</string>
+    <string name="rate">Peux tu évaluer ton expérience avec moi?</string>
+    <string name="locker_number">Produits dans le casier #</string>
+    <string name="confim_id">Signe ici</string>
+    <string name="waring_sign">La signature ne peut pas être vide</string>
+    <string name="items">Produits</string>
+    <string name="OrderNumber">Numéro de commande</string>
+    <string name="outStock">Rupture de stock</string>
+    <string name="item_name">Nom produit</string>
+    <string name="loading">Loading</string>
+    <string name="close">Voulez vous fermer cette app ?</string>
+    <string name="dialogCredentials">Entrez le mail de Pepper</string>
+    <string name="email">email</string>
+    <string name="password">mot de passe</string>
+    <string name="signin">Connexion</string>
+    <string name="cancel">Annuler</string>
+
+    <!--prices-->
+    <string name="price">00.00€</string>
+    <string name="price_old">EUR 89.99</string>
+    <string name="price_sock">EUR 10.99</string>
+    <string name="price_sock_old">EUR 20.99</string>
+
+    <!--ratings-->
+    <string name="perfect">\"Parfait\"</string>
+    <string name="good">\"Bien\"</string>
+    <string name="okay">\"Correct\"</string>
+    <string name="bad">\"Mauvais\"</string>
+
+
+    <string name="it_dress_man_black">Chaussures chic pour homme, noir</string>
+    <string name="it_dress_man_grey">Chaussures chic pour homme, gris</string>
+    <string name="it_dress_man_red">Chaussures chic pour homme, rouge</string>
+    <string name="it_dress_man_tan">Chaussures chic pour homme, beige</string>
+
+    <string name="it_dress_woman_black">Chaussures chic pour femme, noir</string>
+    <string name="it_dress_woman_grey">Chaussures chic pour femme, gris</string>
+    <string name="it_dress_woman_red">Chaussures chic pour femme, rouge</string>
+    <string name="it_dress_woman_tan">Chaussures chic pour femme, beige</string>
+
+    <string name="it_sport_man_black">Tennis pour homme, noir</string>
+    <string name="it_sport_man_grey">Tennis pour homme, gris</string>
+    <string name="it_sport_man_red">Tennis pour homme, rouge</string>
+    <string name="it_sport_man_tan">Tennis pour homme, beige</string>
+
+    <string name="it_sport_woman_black">Tennis pour femme, noir</string>
+    <string name="it_sport_woman_grey">Tennis pour femme, gris</string>
+    <string name="it_sport_woman_red">Tennis pour femme, rouge</string>
+    <string name="it_sport_woman_tan">Tennis pour femme, beige</string>
+
+    <string name="sc_dress_man">chaussettes classiques</string>
+    <string name="sc_dress_woman">chaussettes classiques</string>
+    <string name="sc_sport_man">chaussettes cool</string>
+    <string name="sc_sport_woman">chaussettes cool</string>
+
+</resources>

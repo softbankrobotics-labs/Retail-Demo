@@ -2,8 +2,10 @@ topic: ~email()
 
 proposal: %init Please enter your email here to proceed with the Order.
 
-proposal: %validmail Thanks, Sending the email right away ! ^execute(FragmentExecutor, feedback)
+proposal: %validmail Thanks, I'm Sending the email right away ! ^execute(FragmentExecutor, feedback)
 
-u:(products) okay, I'm going back. ^execute(FragmentExecutor, product_context)
+u:([products product]) okay, I'm going back. ^execute(FragmentExecutor, product_context)
 
-u:(home) okay, going home. ^execute(FragmentExecutor, home)
+u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
+
+u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

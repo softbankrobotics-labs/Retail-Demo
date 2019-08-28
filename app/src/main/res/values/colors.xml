@@ -15,7 +15,7 @@
     <color name="colorPurplelight">#BD00F4</color>
     <color name="colorPurpleDark">#8200FC</color>
 
-    <color name="transparent">#008200FC</color>
+    <color name="transparent">#00000000</color>
     <color name="transparent_black">#33000000</color>
     <color name="transparent_black_dark">#4D000000</color>
 
@@ -27,7 +27,7 @@
 
     <!-- general purpose colors -->
     <color name="white">#FFFFFF</color>
-    <color name="back">#000000</color>
+    <color name="black">#000000</color>
     <color name="light_gray">#E4E4E4</color>
     <color name="background_image">#E4E4E4</color>
     <color name="grey">#99777373</color>
