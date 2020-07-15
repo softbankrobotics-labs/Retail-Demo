@@ -1,7 +1,7 @@
 package com.softbankrobotics.retaildemo.Utils;
 
 import android.os.CountDownTimer;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 
 import com.softbankrobotics.retaildemo.MainActivity;

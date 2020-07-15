@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/ui_grad_blue_r0_a90"
-    android:layout_centerInParent="true">
+    android:layout_centerInParent="true"
+    android:background="@drawable/ui_grad_blue_r0_a90">
 
     <TextView
         android:id="@+id/text_enter_mail"
@@ -14,16 +13,17 @@
         android:layout_margin="15dp"
         android:layout_marginTop="16dp"
         android:clickable="false"
+        android:gravity="center"
         android:padding="15dp"
         android:text="@string/TextEnterMail"
         android:textAllCaps="false"
         android:textSize="35sp"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -32,65 +32,166 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
+        <!--<EditText
             android:id="@+id/edit_mail"
-            android:layout_width="wrap_content"
+            android:layout_width="620dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:ems="10"
-            android:textColor="@color/white"
-            android:hint="@string/hintMail"
-            android:textColorHint="@color/transparent_gray"
             android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="@string/hintMail"
             android:inputType="textEmailAddress"
+            android:textColor="@color/white"
+            android:textColorHint="@color/transparent_gray"
             android:textSize="35sp" />
 
         <Button
-            android:id="@+id/button_done_mail"
+            android:id="@+id/button_done_mailold"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:text="@string/ButtonConfirm"
             android:background="@drawable/ui_white_r30"
+            android:text="@string/ButtonConfirm"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="35sp" />-->
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_email_layout_items"
+        android:layout_width="@dimen/container_size_width_large"
+        android:layout_height="@dimen/container_size_height"
+        android:background="@drawable/win_full_container"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayoutStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/component_margin_small"
+                android:layout_marginEnd="@dimen/component_margin_small"
+                android:layout_marginTop="@dimen/component_margin_small"
+                android:layout_marginBottom="@dimen/component_margin_small"
+                android:layout_weight="3"
+                android:hint="@string/label_customer_email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fragment_email_text_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionSend"
+                    android:inputType="none"
+                    android:privateImeOptions="nm"
+                    android:singleLine="true"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_small" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayoutDropdownStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/component_margin_small"
+                android:layout_marginEnd="@dimen/component_margin_small"
+                android:layout_marginTop="@dimen/component_margin_small"
+                android:layout_marginBottom="@dimen/component_margin_small"
+                android:layout_weight="2"
+                android:hint="@string/label_email_suffix">
+
+                <AutoCompleteTextView
+                    android:id="@+id/fragment_email_text_dropdown_email_suffix"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionSend"
+                    android:inputType="none"
+                    android:privateImeOptions="nm"
+                    android:singleLine="true"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_small" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <FrameLayout
+                android:id="@+id/button_done_mail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="@dimen/component_margin_small"
+                android:layout_marginBottom="@dimen/component_margin_small"
+                android:layout_weight="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/fragment_email_text_button_send"
+                    style="@style/TextButtonSayValidationStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_button_height"
+                    android:textSize="34sp"
+                    android:text="@string/ButtonConfirm" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/component_margin_medium"
+                    android:layout_marginTop="@dimen/component_margin_small"
+                    android:contentDescription="@string/images_content_description"
+                    app:srcCompat="@drawable/ic_email" />
+
+            </FrameLayout>
+
+        </LinearLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/button_back_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="15dp"
-        android:textSize="30sp"
-        android:text="@string/other"
-        android:textColor="@color/dark_gray"
-        android:textAllCaps="false"
         android:background="@drawable/ui_white_r30"
         android:backgroundTint="@color/light_gray"
         android:drawableStart="@drawable/ic_back"
         android:padding="10dp"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
-        />
+        android:text="@string/other"
+        android:textAllCaps="false"
+        android:textColor="@color/dark_gray"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_home_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_back_email"
         android:layout_margin="15dp"
-        android:textSize="30sp"
-        android:text="@string/home"
-        android:textColor="@color/dark_gray"
-        android:textAllCaps="false"
         android:background="@drawable/ui_white_r30"
         android:backgroundTint="@color/light_gray"
         android:padding="10dp"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        />
+        android:text="@string/home"
+        android:textAllCaps="false"
+        android:textColor="@color/dark_gray"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_back_email" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

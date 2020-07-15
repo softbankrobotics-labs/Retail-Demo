@@ -2,7 +2,7 @@ package com.softbankrobotics.retaildemo.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -12,10 +12,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import androidx.fragment.app.Fragment;
+
 import com.softbankrobotics.retaildemo.MainActivity;
 import com.softbankrobotics.retaildemo.R;
 
-public class SplashScreenFragment extends android.support.v4.app.Fragment {
+public class SplashScreenFragment extends Fragment {
 
     private static final String TAG = "MSI_Fragment";
 
@@ -26,8 +28,14 @@ public class SplashScreenFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         int fragmentId = R.layout.fragment_splash_screen;
         this.ma = (MainActivity) getActivity();
-        ma.getCurrentChatData().currentTopicStatus = null;
-        ma.getCurrentChatData().currentTopicName = null;
+        try {
+            ma.getCurrentChatData().currentTopicStatus = null;
+            ma.getCurrentChatData().currentTopicName = null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG, "onCreateView: Exception : "+ e);
+        }
+
         if(ma != null){
             Integer themeId = ma.getThemeId();
             if(themeId != null){

@@ -14,7 +14,7 @@ This app showcases the capabilities of pepper in the retail sector, we suppose h
 
 ## Compatibility
 
-Tested running on pepper 1.8 and 1.8a, using NAOqi 2.9.3, on first startup pepper will ask the permission to use the camera (to scan the qrCodes) as well as the Gmail credentials that will be used to send emails, a popup will also show up the first time you send and email, please make sure to do all this setup before showcasing the app.
+Tested running on pepper 1.8 and 1.8a, using NAOqi 2.9.4, QiSDK 1.6, on first startup pepper will ask the permission to use the camera (to scan the qrCodes) as well as the Gmail credentials that will be used to send emails(you can create a gmail address for this), a popup will also show up the first time you send an email, please make sure to do all this setup before showcasing the app.
 
 If you need to change the email credentials you can just empty the application's cache, the popup will show up on app startup again, make sure to resend an email again after changing them. 
 

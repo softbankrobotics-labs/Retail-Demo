@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -16,6 +16,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import androidx.fragment.app.Fragment;
+
 import com.aldebaran.qi.Future;
 import com.aldebaran.qi.sdk.object.human.Human;
 import com.aldebaran.qi.sdk.object.humanawareness.HumanAwareness;
@@ -24,14 +26,13 @@ import com.softbankrobotics.retaildemo.R;
 
 import java.util.List;
 
-public class MainMenuFragment extends android.support.v4.app.Fragment {
+public class MainMenuFragment extends Fragment {
 
     private static final String TAG = "MSI_MainMenuFragment";
     private MainActivity ma;
     private View languageContainer;
     private CountDownTimer countDownCheckHuman;
     private HumanAwareness humanAwareness;
-
 
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -41,7 +42,9 @@ public class MainMenuFragment extends android.support.v4.app.Fragment {
         humanAwareness = ma.getHumanAwareness();
         countDownCheckHuman = new CountDownTimer(1000, 1000) {
             @Override
-            public void onTick(long millisUntilFinished) { }
+            public void onTick(long millisUntilFinished) {
+            }
+
             @Override
             public void onFinish() {
                 findHumansAround();
@@ -51,16 +54,16 @@ public class MainMenuFragment extends android.support.v4.app.Fragment {
         countDownCheckHuman.start();
         int fragmentId = R.layout.fragment_main_menu;
         this.ma = (MainActivity) getActivity();
-        if(ma != null){
+        if (ma != null) {
             Integer themeId = ma.getThemeId();
-            if(themeId != null){
+            if (themeId != null) {
                 final Context contextThemeWrapper = new ContextThemeWrapper(ma, themeId);
                 LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);
                 return localInflater.inflate(fragmentId, container, false);
-            }else{
+            } else {
                 return inflater.inflate(fragmentId, container, false);
             }
-        }else{
+        } else {
             Log.e(TAG, "could not get mainActivity, can't create fragment");
             return null;
         }
@@ -80,18 +83,18 @@ public class MainMenuFragment extends android.support.v4.app.Fragment {
         Button buttonId = view.findViewById(R.id.button_click);
 
         buttonReturns.setVisibility(View.INVISIBLE);
-        handler.postDelayed(()->{
+        handler.postDelayed(() -> {
             buttonReturns.startAnimation(inFromLeftAnimation());
             buttonReturns.setVisibility(View.VISIBLE);
 
-        },100);
+        }, 100);
 
 
         buttonId.setVisibility(View.INVISIBLE);
-        handler.postDelayed(()->{
+        handler.postDelayed(() -> {
             buttonId.startAnimation(inFromLeftAnimation());
             buttonId.setVisibility(View.VISIBLE);
-        },200);
+        }, 200);
 
         buttonShopping.startAnimation(inFromRightAnimation());
 
@@ -109,29 +112,43 @@ public class MainMenuFragment extends android.support.v4.app.Fragment {
             ma.status.estimatedAge = 20;
             ma.setFragment(new ProductSelectionFragment());
         });
-        ImageButton buttonLanguage =  view.findViewById(R.id.button_language);
+        ImageButton buttonLanguage = view.findViewById(R.id.button_language);
         ImageButton buttonLang1 = view.findViewById(R.id.button_lang_1);
-        buttonLanguage.setOnClickListener(v ->{
-            if(languageContainer.isClickable()){
+        buttonLanguage.setOnClickListener(v -> {
+            if (languageContainer.isClickable()) {
                 languageContainer.setVisibility(View.INVISIBLE);
                 languageContainer.setClickable(false);
-            }else{
+            } else {
                 languageContainer.setVisibility(View.VISIBLE);
                 languageContainer.setClickable(true);
             }
         });
-        if(ma.getCurrentLanguage().toLowerCase().equals("fr")){
+        if (ma.getCurrentLanguage().toLowerCase().equals("fr")) {
             buttonLanguage.setImageResource(R.drawable.lang_fr);
             buttonLang1.setImageResource(R.drawable.lang_uk);
-            buttonLang1.setOnClickListener(v-> {
+            buttonLang1.setOnClickListener(v -> {
                 ma.setLocale("en");
             });
-        }else{
+        } else {
             buttonLanguage.setImageResource(R.drawable.lang_uk);
-            buttonLang1.setImageResource(R.drawable.lang_fr);
-            buttonLang1.setOnClickListener(v-> {
-                ma.setLocale("fr");
-            });
+            try {
+                if (!ma.chatDataList.get("fr").languageIsInstalled) {
+                    buttonLang1.setClickable(false);
+                    buttonLang1.setAlpha((float) 0.5);
+                } else {
+                    buttonLang1.setImageResource(R.drawable.lang_fr);
+                    buttonLang1.setOnClickListener(v -> {
+                        ma.setLocale("fr");
+                    });
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d(TAG, "onCreateView: Exception : "+ e);
+                buttonLang1.setImageResource(R.drawable.lang_fr);
+                buttonLang1.setOnClickListener(v -> {
+                    ma.setLocale("fr");
+                });
+            }
         }
     }
 
@@ -151,9 +168,9 @@ public class MainMenuFragment extends android.support.v4.app.Fragment {
             Human human = humans.get(i);
             int age = human.getEstimatedAge().getYears();
             String gender = human.getEstimatedGender().toString();
-            if(gender.equals("MALE")) {
+            if (gender.equals("MALE")) {
                 ma.status.setGender("MALE");
-            }else if(gender.equals("FEMALE")){
+            } else if (gender.equals("FEMALE")) {
                 ma.status.setGender("FEMALE");
             }
             // Display the characteristics.
@@ -161,7 +178,7 @@ public class MainMenuFragment extends android.support.v4.app.Fragment {
             Log.d(TAG, "Age: " + age + " year(s)");
             Log.d(TAG, "Gender: " + gender);
             //updating Status
-            if(age != -1){
+            if (age != -1) {
                 ma.status.setEstimatedAge(age);
             }
         }

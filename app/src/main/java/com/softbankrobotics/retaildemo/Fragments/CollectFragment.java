@@ -14,9 +14,9 @@ import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -29,22 +29,22 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.softbankrobotics.retaildemo.Barcode.BarcodeTrackerFactory;
-import com.softbankrobotics.retaildemo.Camera.CameraSource;
-import com.softbankrobotics.retaildemo.Camera.CameraSourcePreview;
-import com.softbankrobotics.retaildemo.MainActivity;
-import com.softbankrobotics.retaildemo.R;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
-
-import org.jetbrains.annotations.NotNull;
+import com.softbankrobotics.retaildemo.Barcode.BarcodeTrackerFactory;
+import com.softbankrobotics.retaildemo.Camera.CameraSource;
+import com.softbankrobotics.retaildemo.Camera.CameraSourcePreview;
+import com.softbankrobotics.retaildemo.MainActivity;
+import com.softbankrobotics.retaildemo.R;
 
 import java.io.IOException;
 
-public class CollectFragment extends android.support.v4.app.Fragment {
+public class CollectFragment extends Fragment {
 
     private static final String TAG = "MSI_CollectFragment";
 
@@ -55,7 +55,7 @@ public class CollectFragment extends android.support.v4.app.Fragment {
     private static final int RC_HANDLE_CAMERA_PERM = 2;
     private static final int RC_HANDLE_GMS = 9001;
 
-    public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
         int fragmentId = R.layout.fragment_collect;
         this.ma = (MainActivity) getActivity();
@@ -75,7 +75,7 @@ public class CollectFragment extends android.support.v4.app.Fragment {
     }
 
     @Override
-    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         TextView orderInput = view.findViewById(R.id.edit_order_number);
         view.findViewById(R.id.button_home_collect).setOnClickListener(v ->
                 ma.setFragment(new MainMenuFragment()));
@@ -115,8 +115,9 @@ public class CollectFragment extends android.support.v4.app.Fragment {
             }
         );
         mPreview = view.findViewById(R.id.camera_preview);
+        Log.d(TAG, "onViewCreated: Build.SERIAL : "+Build.SERIAL);
         new Handler().postDelayed(()->{
-            if (!Build.SERIAL.equalsIgnoreCase("EMULATOR28X0X23X0")) {
+            if (!Build.SERIAL.equalsIgnoreCase("EMULATOR30X0X12X0")) {
                 try {
                     boolean autoFocus = true;
                     boolean useFlash = false;

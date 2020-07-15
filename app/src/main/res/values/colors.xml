@@ -75,5 +75,7 @@
     <color name="product_tan">#CBAD96</color>
     <color name="product_tan_darker">#7E6B5D</color>
 
+    <color name="colorSecondary">#8cc63f</color>
+
 
 </resources>

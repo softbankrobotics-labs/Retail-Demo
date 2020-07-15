@@ -1,6 +1,6 @@
 topic: ~productmap()
 
-proposal: %init Perfect, we are getting these items ready for you, just go to the desk right over their, so that my human colleagues can help you.
+proposal: %init we are getting these items ready for you, just go to the desk right over their, so that my human colleagues can help you.
 
 u:(~home) ~confirmation, going home. ^execute(FragmentExecutor, home)
 

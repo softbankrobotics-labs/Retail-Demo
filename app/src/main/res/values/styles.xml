@@ -1,13 +1,13 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ThemeBlue" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="ThemeBlue" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:colorBackground">@color/white</item>
         <item name="colorAccent">@color/blue_vibrant</item>
         <item name="colorPrimaryDark">@color/blue_dark</item>
@@ -21,5 +21,32 @@
     <style name="NumberPickerText">
         <item name="android:textSize">40sp</item>
     </style>
+
+    <!-- Text button say validation style -->
+    <style name="TextButtonSayValidationStyle" parent="Widget.MaterialComponents.TextView">
+        <item name="android:background">@drawable/btn_say_validation</item>
+        <item name="android:gravity">top|center_horizontal</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Text input layout style -->
+    <style name="TextInputLayoutStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeColor">@color/colorSecondary</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="hintTextColor">@color/black</item>
+        <item name="hintTextAppearance">@style/TextInputLayoutHintTextAppearance</item>
+    </style>
+    <style name="TextInputLayoutDropdownStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">@color/colorSecondary</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="hintTextColor">@color/black</item>
+        <item name="hintTextAppearance">@style/TextInputLayoutHintTextAppearance</item>
+    </style>
+    <style name="TextInputLayoutHintTextAppearance" parent="@style/TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_size_hint</item>
+    </style>
+
 
 </resources>

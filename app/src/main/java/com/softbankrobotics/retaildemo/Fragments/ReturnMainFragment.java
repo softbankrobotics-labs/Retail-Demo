@@ -14,9 +14,9 @@ import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -31,6 +31,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.softbankrobotics.retaildemo.Barcode.BarcodeTrackerFactory;
 import com.softbankrobotics.retaildemo.Camera.CameraSource;
@@ -49,7 +51,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class ReturnMainFragment extends android.support.v4.app.Fragment{
+public class ReturnMainFragment extends Fragment {
 
     private static final String TAG = "MSI_ReturnMainFragment";
 
@@ -157,8 +159,9 @@ public class ReturnMainFragment extends android.support.v4.app.Fragment{
 
 
         mPreview = view.findViewById(R.id.camera_preview);
+        Log.d(TAG, "onViewCreated: Build.SERIAL : "+Build.SERIAL);
         new Handler().postDelayed(()->{
-            if (!Build.SERIAL.equalsIgnoreCase("EMULATOR28X0X23X0")) {
+            if (!Build.SERIAL.equalsIgnoreCase("EMULATOR30X0X12X0")) {
                 try {
                     boolean autoFocus = true;
                     boolean useFlash = false;

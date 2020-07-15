@@ -31,3 +31,16 @@ concept:(retour)["retour" "retour arrière" "retourner" "en arrière"]
 concept:(bye)["Au revoir" "ciao" "a plus tard" "à bientôt" "à la prochaine" "au plaisir" " bye bye" "bonsoir" "salut"]
 
 concept:(locker) ["$locker" "none"]
+
+concept:(can_you) [~vb_ask_pouvoir ~vb_ask_savoir]
+concept:(vb_ask_pouvoir) ["est-ce que ~vb_pos_you_pouvoir" ~vb_pos_you_pouvoir ~vb_int_you_pouvoir ~vb_neg_you_pouvoir]
+concept:(vb_ask_savoir) ["est-ce que ~vb_pos_you_savoir" ~vb_pos_you_savoir ~vb_int_you_savoir ~vb_neg_you_savoir]
+concept:(vb_pos_you_pouvoir) ["tu [peux pourrais]"]
+concept:(vb_neg_you_pouvoir) ["tu {ne} [peux pourrais] pas"]
+concept:(vb_int_you_pouvoir) [peux-tu pourrais-tu]
+
+concept:(vb_pos_you_savoir) ["tu [sais saurais]"]
+concept:(vb_neg_you_savoir) ["tu {ne} [sais saurais] pas"]
+concept:(vb_int_you_savoir) [sais-tu saurais-tu]
+
+

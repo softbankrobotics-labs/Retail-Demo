@@ -4,7 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -14,21 +15,20 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+
 import com.softbankrobotics.retaildemo.MainActivity;
 import com.softbankrobotics.retaildemo.R;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.lang.reflect.Field;
 
-public class CollectLockerFragment extends android.support.v4.app.Fragment {
+public class CollectLockerFragment extends Fragment {
 
     private static final String TAG = "MSI_FragmentLocker";
 
     private MainActivity ma;
     private CountDownTimer countDownFeedback;
 
-    public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
         this.ma = (MainActivity) getActivity();
         countDownFeedback = new CountDownTimer(60000, 1000) {
@@ -58,7 +58,7 @@ public class CollectLockerFragment extends android.support.v4.app.Fragment {
     }
 
     @Override
-    public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Button button = view.findViewById(getResId("locker_"+ ma.status.lockerNumber,R.id.class));
         view.findViewById(R.id.button_finish_locker).setOnClickListener( (v) -> ma.setFragment(new FeedbackFragment()));
         Animation myFadeInAnimation = AnimationUtils.loadAnimation(ma, R.anim.shrink_right);

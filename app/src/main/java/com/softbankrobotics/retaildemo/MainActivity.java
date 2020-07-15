@@ -5,11 +5,12 @@ import android.app.AlertDialog;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,8 +26,10 @@ import com.aldebaran.qi.sdk.design.activity.conversationstatus.SpeechBarDisplayS
 import com.aldebaran.qi.sdk.object.conversation.Phrase;
 import com.aldebaran.qi.sdk.object.conversation.QiChatExecutor;
 import com.aldebaran.qi.sdk.object.humanawareness.HumanAwareness;
+import com.google.android.gms.vision.barcode.Barcode;
 import com.softbankrobotics.retaildemo.Barcode.BarcodeTracker;
 import com.softbankrobotics.retaildemo.Executors.FragmentExecutor;
+import com.softbankrobotics.retaildemo.Executors.LanguageExecutor;
 import com.softbankrobotics.retaildemo.Executors.StatusExecutor;
 import com.softbankrobotics.retaildemo.Fragments.CollectConfirmFragment;
 import com.softbankrobotics.retaildemo.Fragments.LoadingFragment;
@@ -34,7 +37,6 @@ import com.softbankrobotics.retaildemo.Fragments.MainMenuFragment;
 import com.softbankrobotics.retaildemo.Fragments.ProductSelectionFragment;
 import com.softbankrobotics.retaildemo.Fragments.ReturnMainFragment;
 import com.softbankrobotics.retaildemo.Fragments.SplashScreenFragment;
-import com.google.android.gms.vision.barcode.Barcode;
 import com.softbankrobotics.retaildemo.Utils.ChatData;
 import com.softbankrobotics.retaildemo.Utils.CountDownNoInteraction;
 import com.softbankrobotics.retaildemo.Utils.TokenFile;
@@ -52,39 +54,43 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
 
     private static final String TAG = "MSI_MainActivity";
     private static final int RC_HANDLE_CAMERA_PERM = 2;
+    //topicNames needs to be updated wih the topics names of the topics in the raw resource dir
+    public Status status;
+    public Map<String, ChatData> chatDataList = new HashMap<>();
     private FragmentManager fragmentManager;
     private QiContext qiContext;
-    private ChatData currentChatData, frenchChatData, englishChatData;
-    private String currentFragment,currentLanguage;
+    private ChatData currentChatData, chatData;
+    private String currentFragment, currentLanguage;
     private CountDownNoInteraction countDownNoInteraction;
     private HumanAwareness humanAwareness;
     private android.content.res.Configuration config;
     private Resources res;
-    private Future<Void> chatFuture;
+    private Future<Void> chatRunFuture;
     private String email;
     private String password;
-
-    //topicNames needs to be updated wih the topics names of the topics in the raw resource dir
-    private final List<String> topicNames = Arrays.asList("collect","collectconfirm","concepts",
-            "email","feedback","mainmenu","product","productmap","productselection","productupsell",
-            "returnmain","returnproduct","returnreason","collectlocker");
-
-    public Status status;
+    private Boolean objects_built = false;
+    private final List<String> topicNames = Arrays.asList("collect", "collectconfirm", "concepts",
+            "email", "feedback", "mainmenu", "product", "productmap", "productselection", "productupsell",
+            "returnmain", "returnproduct", "returnreason", "collectlocker");
+    private List<String> locales = Arrays.asList("fr", "en");
+    private List<String> qiVariables = new ArrayList<>(Arrays.asList("signed", "color", "size", "locker", "first"));
+    private List<String> dynamics = new ArrayList<>(Arrays.asList("product_0", "product_1", "product_2", "product_3", "product_4", "product_type"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        res = getApplicationContext().getResources();
+        //res = getApplicationContext().getResources();
+        res = getResources();
         config = res.getConfiguration();
         this.fragmentManager = getSupportFragmentManager();
         this.status = new Status(this);
         QiSDK.register(this, this);
         countDownNoInteraction = new CountDownNoInteraction(this,
-                new SplashScreenFragment(), 300000,10000);
+                new SplashScreenFragment(), 120000, 10000);
         countDownNoInteraction.start();
-        if(config.locale.toString().contains("fr")){
+        if (config.locale.toString().contains("fr")) {
             setUIWithLocale("fr");
-        }else{
+        } else {
             setUIWithLocale("en");
         }
         //request the permissions to use the camera
@@ -99,7 +105,7 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
         }
         setContentView(R.layout.activity_main);
         String token = TokenFile.getEmailCredentials(getApplicationContext());
-        if(token.length() == 0){
+        if (token.length() == 0) {
             LayoutInflater inflater = this.getLayoutInflater();
             final View prompt = inflater.inflate(R.layout.dialog_email_credentials, null);
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -111,24 +117,25 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
             AlertDialog dialog = builder.create();
             cancel.setOnClickListener(v -> dialog.hide());
             signIn.setOnClickListener(v -> {
-                this.email = etEmail.getText().toString();
-                this.password = etPassword.getText().toString();
-                Log.d(TAG,"email" + email);
-                Log.d(TAG,"pws" + password);
-                TokenFile.saveEmailCredentials(getApplicationContext(),
-                         email+ " " + password );
-                dialog.hide();
+                if (!etEmail.getText().toString().equalsIgnoreCase("") && !etPassword.getText().toString().equalsIgnoreCase("")) {
+                    this.email = etEmail.getText().toString();
+                    this.password = etPassword.getText().toString();
+                    TokenFile.saveEmailCredentials(getApplicationContext(),
+                            email + " " + password);
+                    dialog.hide();
+                }
             });
             dialog.show();
-            Log.d(TAG,"created credentials file");
-        }else{
+            Log.i(TAG, "created credentials file");
+        } else {
             this.email = token.split(" ")[0];
             this.password = token.split(" ")[1];
             Log.d(TAG, "loaded credentials file : " + email + " " + password);
+            Log.i(TAG, "loaded credentials file");
         }
     }
 
-    private void setUIWithLocale(String strLocale){
+    private void setUIWithLocale(String strLocale) {
         currentLanguage = strLocale;
         Locale locale = new Locale(strLocale);
         config.setLocale(locale);
@@ -136,63 +143,94 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
     }
 
     @Override
-    public void onUserInteraction()
-    {
-        if(getFragment() instanceof SplashScreenFragment){
+    public void onUserInteraction() {
+        if (getFragment() instanceof SplashScreenFragment) {
             setFragment(new MainMenuFragment());
             countDownNoInteraction.start();
-        }else{
+        } else {
             countDownNoInteraction.reset();
         }
     }
 
     @Override
     public void onRobotFocusGained(QiContext qiContext) {
-        Log.d(TAG, "onRobotFocusGained");
+        Log.i(TAG, "onRobotFocusGained: locale : " + config.locale.toString());
+
         this.qiContext = qiContext;
-        Locale tmpLocale = new Locale(currentLanguage);
-        frenchChatData = new ChatData(this,qiContext,new Locale("fr"),topicNames,true);
-        englishChatData = new ChatData(this,qiContext,new Locale("en"),topicNames,true);
-        Map<String, QiChatExecutor> executors = new HashMap<>();
-        executors.put("FragmentExecutor",new FragmentExecutor(qiContext,this));
-        executors.put("StatusExecutor",new StatusExecutor(qiContext,this));
-        List<String> qiVariables = new ArrayList<>(Arrays.asList("signed", "color", "size", "locker", "first"));
-        List<String> dynamics = new ArrayList<>(Arrays.asList("product_0", "product_1", "product_2", "product_3", "product_4","product_type"));
-        setUpChat(frenchChatData,executors,qiVariables,dynamics);
-        setUpChat(englishChatData,executors,qiVariables,dynamics);
-        currentChatData = englishChatData;
-        config.setLocale(tmpLocale);
-        res.updateConfiguration(config, res.getDisplayMetrics());
-        if(currentLanguage.equals("fr")){
-            currentChatData = frenchChatData;
-        }else{
-            currentChatData = englishChatData;
+
+        initChat();
+
+        if (currentLanguage.equals("fr")) {
+            currentChatData = chatDataList.get("fr");
+        } else {
+            currentChatData = chatDataList.get("en");
         }
+
+        runChat();
+        startHumanAwareness();
+    }
+
+    private void initChat() {
+        Log.i(TAG, "Objects_built : " + objects_built);
+        if (!objects_built) {
+            Log.d(TAG, "initChat: started");
+
+            Map<String, QiChatExecutor> executors = new HashMap<>();
+            executors.put("FragmentExecutor", new FragmentExecutor(qiContext, this));
+            executors.put("StatusExecutor", new StatusExecutor(qiContext, this));
+            executors.put("LanguageExecutor", new LanguageExecutor(qiContext, this));
+
+            for (String locale : locales) {
+                try {
+                    chatData = new ChatData(this, qiContext, new Locale(locale), topicNames, true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                chatDataList.put(locale, chatData);
+                if (chatData.languageIsInstalled)
+                    chatData.setUpChatContent(executors, qiVariables, dynamics);
+            }
+            objects_built = true;
+            Log.d(TAG, "initChat: objects_built: "+objects_built);
+        } else {
+            Log.d(TAG, "initChat: Chat already initialized");
+            for (String locale : locales) {
+                chatDataList.get(locale).setupChat(this.qiContext);
+            }
+        }
+    }
+
+    private void runChat() {
         currentChatData.chat.async().addOnStartedListener(() -> {
-            setSpeechBarDisplayStrategy(SpeechBarDisplayStrategy.ALWAYS);
-            setFragment(new MainMenuFragment());
+            runOnUiThread(() -> {
+                setSpeechBarDisplayStrategy(SpeechBarDisplayStrategy.ALWAYS);
+                setFragment(new MainMenuFragment());
+            });
         });
         currentChatData.chat.async().addOnNormalReplyFoundForListener(input -> {
             countDownNoInteraction.reset();
         });
         currentChatData.variables.get("first").async().setValue("0");
-        chatFuture = currentChatData.chat.async().run();
+        chatRunFuture = currentChatData.chat.async().run();
+    }
+
+    private void startHumanAwareness() {
         humanAwareness = getQiContext().getHumanAwareness();
         humanAwareness.async().addOnEngagedHumanChangedListener(engagedHuman -> {
-            if(getFragment() instanceof SplashScreenFragment){
-                if(engagedHuman != null){
+            if (engagedHuman != null) {
+                if (getFragment() instanceof SplashScreenFragment) {
                     setFragment(new MainMenuFragment());
+                    countDownNoInteraction.start();
+                } else {
+                    countDownNoInteraction.reset();
                 }
-            }else{
-                countDownNoInteraction.reset();
             }
         });
-
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+                                           @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case RC_HANDLE_CAMERA_PERM: {
 
@@ -209,13 +247,28 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
 
     @Override
     public void onRobotFocusLost() {
-        humanAwareness.async().removeAllOnEngagedHumanChangedListeners();
+        Log.i(TAG, "onRobotFocusLost");
+        if (humanAwareness != null) {
+            try {
+                humanAwareness.removeAllOnEngagedHumanChangedListeners();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (currentChatData.chat != null) {
+            try {
+                currentChatData.chat.removeAllOnStartedListeners();
+                currentChatData.chat.removeAllOnNormalReplyFoundForListeners();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         this.qiContext = null;
     }
 
     @Override
     public void onRobotFocusRefused(String reason) {
-        Log.d(TAG, "onRobotFocusRefused");
+        Log.i(TAG, "onRobotFocusRefused");
     }
 
     @Override
@@ -225,42 +278,39 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
         super.onDestroy();
     }
 
-    private void setUpChat(ChatData chatData, Map<String, QiChatExecutor> executors,
-                           List<String> qiVariables, List<String> dynamics){
-        chatData.setupExecutors(executors);
-        chatData.setupQiVariables(qiVariables);
-        chatData.setupDynamics(dynamics);
-    }
-
     //sets the fragment while updating the status productString
-    public void setFragment(Fragment fragment, String productString){
-        Log.d(TAG,"product String : " + productString);
+    public void setFragment(Fragment fragment, String productString) {
+        Log.d(TAG, "product String : " + productString);
         this.status.productString = productString;
         this.setFragment(fragment);
-
     }
 
-    public void setFragment(Fragment fragment){
+    public Fragment getFragment() {
+        return fragmentManager.findFragmentByTag("currentFragment");
+    }
+
+    public void setFragment(Fragment fragment) {
         currentFragment = fragment.getClass().getSimpleName();
-        String topicName = currentFragment.toLowerCase().replace("fragment","");
-        if(!(fragment instanceof  LoadingFragment || fragment instanceof ProductSelectionFragment || fragment instanceof SplashScreenFragment)) {
+        String topicName = currentFragment.toLowerCase().replace("fragment", "");
+        if (!(fragment instanceof LoadingFragment || fragment instanceof ProductSelectionFragment || fragment instanceof SplashScreenFragment)) {
             this.currentChatData.goToBookmarkNewTopic("init", topicName);
         }
-        Log.d(TAG, "starting fragment Transaction for fragment : " + fragment.getClass().getSimpleName());
+        if (this.currentChatData != null) {
+            if (fragment instanceof LoadingFragment || fragment instanceof SplashScreenFragment) {
+                this.currentChatData.enableListeningAnimation(false);
+            } else {
+                this.currentChatData.enableListeningAnimation(true);
+            }
+        }
+        Log.i(TAG, "starting fragment Transaction for fragment : " + fragment.getClass().getSimpleName());
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.setCustomAnimations(R.anim.enter_fade_in_right,R.anim.exit_fade_out_left,R.anim.enter_fade_in_left,R.anim.exit_fade_out_right);
-        transaction.replace(R.id.placeholder, fragment,"currentFragment");
+        transaction.setCustomAnimations(R.anim.enter_fade_in_right, R.anim.exit_fade_out_left, R.anim.enter_fade_in_left, R.anim.exit_fade_out_right);
+        transaction.replace(R.id.placeholder, fragment, "currentFragment");
         transaction.addToBackStack(null);
         transaction.commit();
     }
 
-    public android.support.v4.app.Fragment getFragment() {
-        return fragmentManager.findFragmentByTag("currentFragment");
-    }
-
-
-
-    public Integer getThemeId(){
+    public Integer getThemeId() {
         try {
             return getPackageManager().getActivityInfo(getComponentName(), 0).getThemeResource();
         } catch (PackageManager.NameNotFoundException e) {
@@ -273,36 +323,39 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
         return humanAwareness;
     }
 
-    public void setLocale(String lang){
-        if(currentLanguage.equals(lang)){
+    public void setLocale(String lang) {
+        if (currentLanguage.equals(lang)) {
             setFragment(new MainMenuFragment());
             return;
         }
         currentChatData.currentTopicName = null;
         currentChatData.currentTopicStatus = null;
-        chatFuture.requestCancellation();
-        chatFuture.thenConsume(i -> chatFuture = currentChatData.chat.async().run());
-        setFragment(new LoadingFragment());
-        Log.d(TAG,"setting Locale to : " + lang);
+
+        runOnUiThread(() -> {
+            this.setFragment(new LoadingFragment());
+        });
+        Log.i(TAG, "setting Locale to : " + lang);
         setUIWithLocale(lang);
-        runOnUiThread(() -> setContentView(R.layout.activity_main));
+
         currentChatData.chat.async().removeAllOnStartedListeners();
         currentChatData.chat.async().removeAllOnNormalReplyFoundForListeners();
-        if(lang.equals("fr")){
-            currentChatData = frenchChatData;
-        }else{
-            currentChatData = englishChatData;
+
+        if (lang.equals("fr")) {
+            currentChatData = chatDataList.get("fr");
+        } else {
+            currentChatData = chatDataList.get("en");
         }
-        currentChatData.chat.async().addOnStartedListener(() -> {
-            setFragment(new MainMenuFragment());
-        });
-        currentChatData.chat.async().addOnNormalReplyFoundForListener(input -> {
-            countDownNoInteraction.reset();
-        });
+
+        if (chatRunFuture != null) {
+            chatRunFuture.requestCancellation();
+            chatRunFuture.thenConsume(ignored -> runChat());
+        } else {
+            runChat();
+        }
     }
 
-    public void setQiVariable(String variableName, String value){
-        currentChatData.setQiVariable(variableName,value);
+    public void setQiVariable(String variableName, String value) {
+        currentChatData.setQiVariable(variableName, value);
     }
 
     @Override
@@ -311,15 +364,15 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
         super.onPause();
     }
 
-    public ChatData getCurrentChatData(){
+    public ChatData getCurrentChatData() {
         return currentChatData;
     }
 
-    public String getProductString(){
+    public String getProductString() {
         return status.productString;
     }
 
-    public String getCurrentLanguage(){
+    public String getCurrentLanguage() {
         return currentLanguage;
     }
 
@@ -330,12 +383,12 @@ public class MainActivity extends RobotActivity implements RobotLifecycleCallbac
     }
 
     //concept name must be "product_#"
-    public void setDynamicProductName(String conceptName, String productName){
-        if(conceptName.equals("product_type")){
+    public void setDynamicProductName(String conceptName, String productName) {
+        if (conceptName.equals("product_type")) {
             currentChatData.dynamics.get(5).async().addPhrases(Collections.singletonList(new Phrase(productName)));
             return;
         }
-        Log.d(TAG,"Dynamic Index : " + conceptName.charAt(8));
+        Log.d(TAG, "Dynamic Index : " + conceptName.charAt(8));
         currentChatData.dynamics.get(Character.getNumericValue(conceptName.charAt(8))).async().addPhrases(Collections.singletonList(new Phrase(productName)));
     }
 

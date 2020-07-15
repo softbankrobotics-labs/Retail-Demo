@@ -3,7 +3,7 @@ package com.softbankrobotics.retaildemo.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -15,12 +15,14 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
+import androidx.fragment.app.Fragment;
+
 import com.softbankrobotics.retaildemo.MainActivity;
 import com.softbankrobotics.retaildemo.R;
 
 import java.lang.reflect.Field;
 
-public class ProductFragment extends android.support.v4.app.Fragment {
+public class ProductFragment extends Fragment {
 
     private static final String TAG = "MSI_ProductFragment";
 
@@ -86,10 +88,10 @@ public class ProductFragment extends android.support.v4.app.Fragment {
         buttonBuy = view.findViewById(R.id.button_buy_products);
         buttonBuy.setOnClickListener(v -> onClickBuy());
 
-        view.findViewById(R.id.button_color_black).setOnClickListener(v -> setProductColor("black"));
-        view.findViewById(R.id.button_color_grey).setOnClickListener(v -> setProductColor("grey"));
-        view.findViewById(R.id.button_color_red).setOnClickListener(v -> setProductColor("red"));
-        view.findViewById(R.id.button_color_tan).setOnClickListener(v -> setProductColor("tan"));
+        view.findViewById(R.id.button_color_black).setOnClickListener(v -> setProductColor(getString(R.string.black)));
+        view.findViewById(R.id.button_color_grey).setOnClickListener(v -> setProductColor(getString(R.string.grey)));
+        view.findViewById(R.id.button_color_red).setOnClickListener(v -> setProductColor(getString(R.string.red)));
+        view.findViewById(R.id.button_color_tan).setOnClickListener(v -> setProductColor(getString(R.string.tan)));
 
         productMain = view.findViewById(R.id.image_main);
         productSecondary = view.findViewById(R.id.image_secondary);
@@ -148,11 +150,16 @@ public class ProductFragment extends android.support.v4.app.Fragment {
     public void setProductColor(String color){
         Log.d(TAG,"setting product color : "+color);
         ma.setQiVariable("color",color);
-        if(color.equals(getResources().getString(R.string.black).replaceAll("\"","").toLowerCase())){
+        Log.d(TAG, "setProductColor black: "+getResources().getString(R.string.black));
+        Log.d(TAG, "setProductColor red: "+getResources().getString(R.string.red));
+        Log.d(TAG, "setProductColor tan: "+getResources().getString(R.string.tan));
+        Log.d(TAG, "setProductColor grey: "+getResources().getString(R.string.grey));
+
+        if(color.equalsIgnoreCase(getResources().getString(R.string.black))){
             color = "black";
-        }else if(color.equals(getResources().getString(R.string.red).replaceAll("\"","").toLowerCase())){
+        }else if(color.equalsIgnoreCase(getResources().getString(R.string.red))){
             color = "red";
-        }else if(color.equals(getResources().getString(R.string.tan).replaceAll("\"","").toLowerCase())){
+        }else if(color.equalsIgnoreCase(getResources().getString(R.string.tan))){
             color = "tan";
         }else {
             color = "grey";

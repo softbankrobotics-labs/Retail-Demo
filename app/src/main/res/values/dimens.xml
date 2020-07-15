@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="component_margin_mini">4dp</dimen>
+    <dimen name="component_margin_small">8dp</dimen>
+    <dimen name="component_margin_medium">16dp</dimen>
+    <dimen name="component_margin_large">32dp</dimen>
+    <dimen name="text_size_hint">16sp</dimen>
+    <dimen name="text_size_small">24sp</dimen>
+    <dimen name="text_size_body">32sp</dimen>
+    <dimen name="text_size_title">48sp</dimen>
+    <dimen name="picture_size_small">48dp</dimen>
+    <dimen name="picture_size_medium">96dp</dimen>
+    <dimen name="picture_size_semi_large">144dp</dimen>
+    <dimen name="picture_size_large">192dp</dimen>
+    <dimen name="container_size_width">528dp</dimen>
+    <dimen name="container_size_width_half">264dp</dimen>
+    <dimen name="container_size_width_large">900dp</dimen>
+    <dimen name="container_size_height">85dp</dimen>
+    <dimen name="container_size_height_large">384dp</dimen>
+    <dimen name="component_corner_radius_small">20dp</dimen>
+    <dimen name="component_corner_radius_large">50dp</dimen>
+    <dimen name="text_button_width_small">192dp</dimen>
+    <dimen name="text_button_width_medium">288dp</dimen>
+    <dimen name="text_button_width_large">384dp</dimen>
+    <dimen name="text_button_height">64dp</dimen>
+    <dimen name="progress_bar_height">32dp</dimen>
+    <dimen name="switch_width">48dp</dimen>
+</resources>

@@ -7,7 +7,7 @@ proposal: %init ~hello , ^first ["$first==0^rand["my name is" "I'm"] Pepper, ^ra
 u:(~hello) ~hello can I help with choosing your dream shoes, picking up your online order or return an item ?
 
 u:(["{~i_want_to} {~can_you} {let's} ["start {my} shopping" "shop"]"
-    "I want to {[pick buy]} {my} {dream} shoes"]) ~confirmation  ^execute(FragmentExecutor, selection)
+    "I want {to} {pick buy} {my} {dream} shoes"]) ~confirmation  ^execute(FragmentExecutor, selection)
 
 u:({~i_want_to} {~i_need_to} return {an} item) ~confirmation ^execute(FragmentExecutor, returnmain)
 
@@ -17,5 +17,9 @@ u:(["{interested in the} promotion" "sale" "sales" "{man} sneakers {man} on sale
     "{what is} the deal of today"
     "give {me} the [twenty 20] percent off"
     "{~i_want_to} {the} {man} sneakers {man}"]) okay, let me show you today's promotion. ^execute(FragmentExecutor, selection, promotion)
+
+u:({~can_you} speak in French) Are you sure you want to change to French?
+        u1:(~yes) Ok, let's go! ^execute(LanguageExecutor, switch_to_french)
+        u1:(~no) OK, no problem.
 
 u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

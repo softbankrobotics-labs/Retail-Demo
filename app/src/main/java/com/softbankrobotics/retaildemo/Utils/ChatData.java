@@ -8,13 +8,17 @@ import android.util.Log;
 import com.aldebaran.qi.Future;
 import com.aldebaran.qi.sdk.QiContext;
 import com.aldebaran.qi.sdk.builder.ChatBuilder;
+import com.aldebaran.qi.sdk.builder.ListenBuilder;
+import com.aldebaran.qi.sdk.builder.PhraseSetBuilder;
 import com.aldebaran.qi.sdk.builder.QiChatbotBuilder;
 import com.aldebaran.qi.sdk.builder.TopicBuilder;
 import com.aldebaran.qi.sdk.object.conversation.AutonomousReactionImportance;
 import com.aldebaran.qi.sdk.object.conversation.AutonomousReactionValidity;
+import com.aldebaran.qi.sdk.object.conversation.BodyLanguageOption;
 import com.aldebaran.qi.sdk.object.conversation.Bookmark;
 import com.aldebaran.qi.sdk.object.conversation.Chat;
 import com.aldebaran.qi.sdk.object.conversation.EditablePhraseSet;
+import com.aldebaran.qi.sdk.object.conversation.PhraseSet;
 import com.aldebaran.qi.sdk.object.conversation.QiChatExecutor;
 import com.aldebaran.qi.sdk.object.conversation.QiChatVariable;
 import com.aldebaran.qi.sdk.object.conversation.QiChatbot;
@@ -26,6 +30,7 @@ import com.softbankrobotics.retaildemo.R;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -34,6 +39,33 @@ import java.util.Map;
 public class ChatData {
 
     private static final String TAG = "MSI ChatData";
+    private static final List<com.aldebaran.qi.sdk.object.locale.Locale> allQiLocales = new ArrayList<>(
+            Arrays.asList(
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.FRENCH, Region.FRANCE),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.CHINESE, Region.CHINA),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.CHINESE, Region.TAIWAN),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.ENGLISH, Region.UNITED_STATES),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.ARABIC, Region.EGYPT),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.DANISH, Region.DENMARK),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.DUTCH, Region.NETHERLANDS),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.FINNISH, Region.FINLAND),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.GERMAN, Region.GERMANY),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.ITALIAN, Region.ITALY),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.JAPANESE, Region.JAPAN),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.NORWEGIAN_BOKMAL, Region.NORWAY),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.SPANISH, Region.SPAIN),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.SWEDISH, Region.SWEDEN),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.TURKISH, Region.TURKEY),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.CZECH, Region.CZECH_REPUBLIC),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.POLISH, Region.POLAND),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.SLOVAK, Region.SLOVAKIA),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.GREEK, Region.GREECE),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.KOREAN, Region.REPUBLIC_OF_KOREA),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.HUNGARIAN, Region.HUNGARY),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.ENGLISH, Region.UNITED_STATES),
+                    new com.aldebaran.qi.sdk.object.locale.Locale(Language.HEBREW, Region.ISRAEL)
+            )
+    );
     public List<String> topicNames;
     public List<Topic> topics;
     public QiChatbot qiChatbot;
@@ -44,6 +76,7 @@ public class ChatData {
     public List<EditablePhraseSet> dynamics;
     public String currentTopicName;
     public TopicStatus currentTopicStatus;
+    public boolean languageIsInstalled = false;
     private com.aldebaran.qi.sdk.object.locale.Locale qiLocale;
     private Future<Void> currentGotoBookmarkFuture;
 
@@ -61,52 +94,75 @@ public class ChatData {
      */
     public ChatData(Activity activity, QiContext qiContext, Locale locale,
                     List<String> topicNames, Boolean buildChat) {
-        this.topicNames = topicNames;
-        Resources res = activity.getApplicationContext().getResources();
-        Configuration config = res.getConfiguration();
-        Locale previousLocale = null; // needed if several languages are used.
-        if (!config.locale.toString().equals(locale)) {
-            previousLocale = config.locale;
-        }
-        config.setLocale(locale);
-        res.updateConfiguration(config, res.getDisplayMetrics());
-
-        this.topics = new ArrayList<>();
-
-        for (String topicName : topicNames) {
-            Log.d(TAG, "adding " + topicName + " to topic list");
-            topics.add(TopicBuilder.with(qiContext)
-                    .withResource(getResId(topicName, R.raw.class))
-                    .build());
-        }
-
         qiLocale = getQiLocale(locale);
 
-        qiChatbot = QiChatbotBuilder.with(qiContext)
-                .withTopics(topics)
-                .withLocale(qiLocale)
-                .build();
+        if (isLanguageAvailable(qiLocale, qiContext)) {
+            languageIsInstalled = true;
 
-        if (buildChat) {
-            setupChat(qiContext);
-        }
+            this.topicNames = topicNames;
+            //Resources res = activity.getApplicationContext().getResources();
+            Resources res = activity.getResources();
+            Configuration config = res.getConfiguration();
+            Locale previousLocale = null; // needed if several languages are used.
 
-        topicStatuses = new HashMap<>();
-        for (Topic t : qiChatbot.getTopics()) {
-            TopicStatus tmpStat = qiChatbot.topicStatus(t);
-            tmpStat.setEnabled(false);
-            topicStatuses.put(t.getName(), tmpStat);
-        }
+            //Log.d(TAG, "ChatData: config.locale : "+config.locale.toString());
+            //Log.d(TAG, "ChatData: LocaleToSet : "+locale.toString());
 
-        bookmarks = new HashMap<>();
-        for (Topic t : qiChatbot.getTopics()) {
-            bookmarks.put(t.getName(), t.getBookmarks());
-        }
+            if (!config.locale.toString().equalsIgnoreCase(locale.toString())) {
+                Log.d(TAG, "ChatData: !config.locale.toString().equals(locale)");
+                previousLocale = config.locale;
+                Log.d(TAG, "ChatData: LocaleToSet : " + locale.toString());
+                config.setLocale(locale);
+                res.updateConfiguration(config, res.getDisplayMetrics());
+            }
 
-        if (previousLocale != null) {
-            config.setLocale(previousLocale);
-            res.updateConfiguration(config, res.getDisplayMetrics());
-        }
+            //Log.d(TAG, "ChatData: current locale after update : "+config.locale.toString());
+            //Log.d(TAG, "ChatData: startButton String : "+ activity.getString(R.string.back));
+
+            this.topics = new ArrayList<>();
+
+            for (String topicName : topicNames) {
+                Log.d(TAG, "adding " + topicName + " to topic list");
+                topics.add(TopicBuilder.with(qiContext)
+                        .withResource(getResId(topicName, R.raw.class))
+                        .build());
+            }
+
+
+            qiChatbot = QiChatbotBuilder.with(qiContext)
+                    .withTopics(topics)
+                    .withLocale(qiLocale)
+                    .build();
+
+            if (buildChat) {
+                setupChat(qiContext);
+            }
+
+            topicStatuses = new HashMap<>();
+            for (Topic t : qiChatbot.getTopics()) {
+                TopicStatus tmpStat = qiChatbot.topicStatus(t);
+                tmpStat.setEnabled(false);
+                topicStatuses.put(t.getName(), tmpStat);
+            }
+
+            bookmarks = new HashMap<>();
+            for (Topic t : qiChatbot.getTopics()) {
+                bookmarks.put(t.getName(), t.getBookmarks());
+            }
+
+            if (previousLocale != null) {
+                config.setLocale(previousLocale);
+                res.updateConfiguration(config, res.getDisplayMetrics());
+            }
+
+        } else languageIsInstalled = false;
+    }
+
+    public void setUpChatContent(Map<String, QiChatExecutor> executors,
+                                 List<String> qiVariables, List<String> dynamics) {
+        if (executors != null) setupExecutors(executors);
+        if (qiVariables != null) setupQiVariables(qiVariables);
+        if (dynamics != null) setupDynamics(dynamics);
     }
 
     /**
@@ -186,6 +242,30 @@ public class ChatData {
         return qiLocale;
     }
 
+    private boolean isLanguageAvailable(com.aldebaran.qi.sdk.object.locale.Locale locale, QiContext qiContext) {
+        if (!allQiLocales.contains(locale)) {
+            Log.i(TAG, String.format("Language %s does not exist.", locale));
+            return false;
+        }
+        if (qiContext == null) {
+            Log.e(TAG, "Missing QiContext!");
+            return false;
+        }
+        try {
+            PhraseSet phraseSet = PhraseSetBuilder.with(qiContext).withTexts("1", "2").build();
+            ListenBuilder.with(qiContext).withLocale(locale).withPhraseSet(phraseSet).build();
+            return true;
+        } catch (Exception e) {
+            Log.e(TAG, String.format("Could not build LISTEN in %s: %s", locale, e));
+            if (e.getMessage().contains("language is not installed.") ||
+                    e.getMessage().contains("is not supported.")) {
+                return false;
+            } else {
+                throw e;
+            }
+        }
+    }
+
     /**
      * sets up the chat, this function is separated from the constructor since you might want to
      * build ChatData in an activity that will not run the chat,
@@ -199,6 +279,19 @@ public class ChatData {
                 .withChatbot(qiChatbot)
                 .withLocale(qiLocale)
                 .build();
+        Log.i(TAG, "setupChat: ChatBuilt : " + qiLocale.toString());
+    }
+
+    /**
+     * sets up the Listening Animation state for this chat
+     *
+     * @param enableListeningAnimation true or false
+     */
+
+    public void enableListeningAnimation(boolean enableListeningAnimation) {
+        if (enableListeningAnimation)
+            chat.async().setListeningBodyLanguage(BodyLanguageOption.NEUTRAL);
+        else chat.async().setListeningBodyLanguage(BodyLanguageOption.DISABLED);
     }
 
     /**
@@ -292,7 +385,8 @@ public class ChatData {
         TopicStatus nextTopicStatus = topicStatuses.get(topic);
         nextTopicStatus.async().setEnabled(true).andThenConsume(aVoid ->
                 goToBookmark(bookmark, topic));
-        if (currentTopicStatus != null) {
+
+        if (currentTopicStatus != null && !currentTopicName.equals(topic)) {
             currentTopicStatus.async().setEnabled(false);
         }
         currentTopicStatus = nextTopicStatus;

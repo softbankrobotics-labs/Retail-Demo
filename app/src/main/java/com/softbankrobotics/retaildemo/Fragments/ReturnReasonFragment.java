@@ -2,17 +2,19 @@ package com.softbankrobotics.retaildemo.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 import com.softbankrobotics.retaildemo.MainActivity;
 import com.softbankrobotics.retaildemo.R;
 
-public class ReturnReasonFragment extends android.support.v4.app.Fragment {
+public class ReturnReasonFragment extends Fragment {
 
     private static final String TAG = "MSI_ReturnResFragment";
 

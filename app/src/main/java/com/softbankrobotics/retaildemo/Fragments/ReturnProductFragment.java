@@ -2,7 +2,7 @@ package com.softbankrobotics.retaildemo.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -11,12 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.softbankrobotics.retaildemo.MainActivity;
 import com.softbankrobotics.retaildemo.R;
 
 import java.lang.reflect.Field;
 
-public class ReturnProductFragment extends android.support.v4.app.Fragment {
+public class ReturnProductFragment extends Fragment {
 
     private static final String TAG = "MSI_ReturnProdtFragment";
 

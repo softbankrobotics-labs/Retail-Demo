@@ -1,7 +1,7 @@
 <resources>
 
     <!--app name-->
-    <string name="app_name">RetailDemo</string>
+    <string name="app_name">Démo Retail</string>
 
     <!--navigation buttons-->
     <string name="home">\"Menu\"</string>
@@ -41,7 +41,7 @@
     <string name="open_locker">Ouvrir casier "</string>
     <string name="clear_pad">Effacer</string>
     <string name="other">\"Produits\"</string>
-    <string name="ButtonConfirm">Fini</string>
+    <string name="ButtonConfirm">Envoie</string>
     <string name="french">Français</string>
     <string name="spanish">Espagnol</string>
     <string name="german">Allemand</string>
@@ -73,6 +73,8 @@
     <string name="locate">Localiser</string>
     <string name="ok">OK</string>
     <string name="hintMail">email</string>
+    <string name="label_email_suffix">\@</string>
+    <string name="label_customer_email">Email</string>
     <string name="email_subject">Votre Commande chez Pepper store</string>
     <string name="rate">Peux tu évaluer ton expérience avec moi?</string>
     <string name="locker_number">Produits dans le casier #</string>
@@ -127,5 +129,13 @@
     <string name="sc_dress_woman">chaussettes classiques</string>
     <string name="sc_sport_man">chaussettes cool</string>
     <string name="sc_sport_woman">chaussettes cool</string>
+
+    <string-array name="array_email_suffix">
+        <item>\@gmail.com</item>
+        <item>\@hotmail.com</item>
+        <item>\@outlook.com</item>
+        <item>\@yahoo.com</item>
+        <item>\@softbankrobotics.com</item>
+    </string-array>
 
 </resources>

@@ -25,9 +25,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_retail_round"
         android:supportsRtl="true"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name="com.softbankrobotics.retaildemo.MainActivity">
+        <!--launchMode="singleTask in order to keep only one instance of the app alive-->
+        <activity android:name="com.softbankrobotics.retaildemo.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

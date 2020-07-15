@@ -12,7 +12,11 @@ concept:(i_want_to) [want "I want" "I want to" "want to" "I would like to" "woul
 
 concept:(i_need_to) [need "I need" "I need to" "need to"]
 
-concept:(can_you) ["can you" "are you able to" "could you" "do you know how to"]
+concept:(can_you) ["[can will could] you {please}"
+                      "do you think you could"
+                      "are you [ready able] to"
+                      "do you know how to"
+                  ]
 
 concept:(i_am)[I'm i'm "I am" "i am"]
 

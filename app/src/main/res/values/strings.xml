@@ -2,7 +2,7 @@
 
     <!--app name-->
     <!--default language is english-->
-    <string name="app_name">RetailDemo</string>
+    <string name="app_name">Retail Demo</string>
 
     <!--navigation buttons-->
     <string name="home">\"Home\"</string>
@@ -42,7 +42,7 @@
     <string name="open_locker">Open locker "</string>
     <string name="clear_pad">Clear</string>
     <string name="other">\"Products\"</string>
-    <string name="ButtonConfirm">Done</string>
+    <string name="ButtonConfirm">\"Send\"</string>
     <string name="french">french</string>
     <string name="spanish">spanish</string>
     <string name="german">german</string>
@@ -75,6 +75,8 @@
     <string name="locate">Locate</string>
     <string name="ok">OK</string>
     <string name="hintMail">email</string>
+    <string name="label_email_suffix">\@</string>
+    <string name="label_customer_email">Email</string>
     <string name="email_subject">Your order at Pepper Store</string>
     <string name="rate">Could you please rate your experience with me ?</string>
     <string name="locker_number">Items in Locker #</string>
@@ -129,5 +131,16 @@
     <string name="sc_dress_woman">Classic Socks</string>
     <string name="sc_sport_man">Cool Socks</string>
     <string name="sc_sport_woman">Cool Socks</string>
+
+    <!-- Images content descriptions -->
+    <string name="images_content_description" translatable="false">Content description</string>
+
+    <string-array name="array_email_suffix">
+        <item>\@gmail.com</item>
+        <item>\@hotmail.com</item>
+        <item>\@outlook.com</item>
+        <item>\@yahoo.com</item>
+        <item>\@softbankrobotics.com</item>
+    </string-array>
 
 </resources>

@@ -2,8 +2,10 @@ package com.softbankrobotics.retaildemo.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -20,7 +22,7 @@ import com.softbankrobotics.retaildemo.R;
 
 import java.text.DecimalFormat;
 
-public class ProductSelectionFragment extends android.support.v4.app.Fragment {
+public class ProductSelectionFragment extends Fragment {
 
     private static final String TAG = "MSI_SelectionFragment";
 

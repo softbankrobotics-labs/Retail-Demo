@@ -50,7 +50,7 @@ public class StatusExecutor extends BaseQiChatExecutor {
                 break;
             case ("color"):
                 productFragment = (ProductFragment) ma.getFragment();
-                productFragment.setProductColor(value);
+                productFragment.setProductColor("\""+value+"\"");
                 break;
             case ("check"):
                 productFragment = (ProductFragment) ma.getFragment();
@@ -72,7 +72,7 @@ public class StatusExecutor extends BaseQiChatExecutor {
                 productFragment = (ProductFragment) ma.getFragment();
                 String size = value.split(" ")[0];
                 String color = value.split(" ")[1];
-                productFragment.setProductColor(color);
+                productFragment.setProductColor("\""+color+"\"");
                 productFragment.setProductSize(size);
                 Log.d(TAG,"size color executor done");
                 break;

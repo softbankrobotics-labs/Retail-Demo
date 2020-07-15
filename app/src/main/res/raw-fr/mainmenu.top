@@ -16,4 +16,8 @@ u:(["{je suis Intéressé par la} promotion" "soldes" "tennis {pour homme} en so
     "{quel est} la promotion du jour"
     "{~vouloir} la promotion de vingt pourcent"]) okay, voici la promotion du jour ^execute(FragmentExecutor, selection, promotion)
 
+u:(["~can_you parler" parle parlons] anglais) Es-tu sûr de vouloir parler anglais?
+        u1:(~oui) Bien sûr, allons-y! ^execute(LanguageExecutor, switch_to_english)
+        u1:(~non) Ok, pas de soucis!
+
 u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)

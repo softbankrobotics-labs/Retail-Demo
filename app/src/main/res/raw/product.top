@@ -29,5 +29,6 @@ u:([~yes "buy {it}" order]) perfect! ^execute(FragmentExecutor, upsell)
 
 u:(~no) Okay then. please select an other size or color.
 
-u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)
-
+#Conflicts with "buy"
+#u:(~bye) ~bye ^execute(FragmentExecutor, splashscreen)
+u:(["goodbye" "see you" "bye bye"]) ~bye ^execute(FragmentExecutor, splashscreen)
